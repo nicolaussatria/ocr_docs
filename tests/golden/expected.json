@@ -1,0 +1,276 @@
+[
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.135.05",
+   "transactionNo": "2766899",
+   "transactionAt": "2026-09-02T17:10:46",
+   "shift": 3,
+   "pump": 6,
+   "operator": "OPERATOR",
+   "product": "PERTALITE",
+   "volumeLiters": 3.2,
+   "priceNonSubsidized": 14874,
+   "subsidyPerLiter": 4874,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 47666,
+   "subsidyTotal": 15616,
+   "amountPaid": 32050
+  }
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.137.03",
+   "transactionNo": "2645901",
+   "transactionAt": "2026-09-03T22:16:47",
+   "shift": 2,
+   "pump": 11,
+   "operator": "AZKA",
+   "product": "PERTALITE",
+   "volumeLiters": 3.29,
+   "priceNonSubsidized": 14874,
+   "subsidyPerLiter": 4874,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 48935,
+   "subsidyTotal": 16035,
+   "amountPaid": 32900
+  }
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.137.03",
+   "transactionNo": "2669613",
+   "transactionAt": "2026-09-08T22:27:34",
+   "shift": 2,
+   "pump": 11,
+   "operator": "MUHASAN BISRI",
+   "product": "PERTALITE",
+   "volumeLiters": 3.4,
+   "priceNonSubsidized": 15892,
+   "subsidyPerLiter": 5892,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 54032,
+   "subsidyTotal": 20032,
+   "amountPaid": 34000
+  }
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_cash_voucher",
+  "fields": {
+   "merchantId": "34.137.02",
+   "amount": 35000,
+   "product": "PERTALITE"
+  },
+  "note": "handwritten; date '4.07 2026' not reliably legible even to a human"
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.135.05",
+   "transactionNo": "2848063",
+   "transactionAt": "2026-09-23T18:32:25",
+   "shift": 3,
+   "pump": 6,
+   "operator": "OPERATOR",
+   "product": "PERTALITE",
+   "volumeLiters": 2.8,
+   "priceNonSubsidized": 15892,
+   "subsidyPerLiter": 5892,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 44503,
+   "subsidyTotal": 16503,
+   "amountPaid": 28000
+  }
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.137.03",
+   "transactionNo": "2739357",
+   "transactionAt": "2026-09-24T21:38:53",
+   "shift": 2,
+   "pump": 12,
+   "operator": "NUR AFIFAH",
+   "product": "PERTALITE",
+   "volumeLiters": 3.4,
+   "priceNonSubsidized": 15892,
+   "subsidyPerLiter": 5892,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 54032,
+   "subsidyTotal": 20032,
+   "amountPaid": 34000
+  }
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.137.03",
+   "transactionNo": "2743859",
+   "transactionAt": "2026-09-25T21:30:14",
+   "shift": 2,
+   "pump": 12,
+   "operator": "ANISAH FITRIYANI",
+   "product": "PERTALITE",
+   "volumeLiters": 3.3,
+   "priceNonSubsidized": 15892,
+   "subsidyPerLiter": 5892,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 52443,
+   "subsidyTotal": 19443,
+   "amountPaid": 33000
+  }
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.137.03",
+   "transactionNo": "2757904",
+   "transactionAt": "2026-09-28T22:19:17",
+   "shift": 2,
+   "pump": 11,
+   "operator": "ARLIS",
+   "product": "PERTALITE",
+   "volumeLiters": 3.2,
+   "priceNonSubsidized": 15892,
+   "subsidyPerLiter": 5892,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 50854,
+   "subsidyTotal": 18854,
+   "amountPaid": 32000
+  }
+ },
+ {
+  "file": "page1.jpg",
+  "docType": "fuel_subsidized",
+  "fields": {
+   "merchantId": "34.137.03",
+   "transactionNo": "2766967",
+   "transactionAt": "2026-09-30T21:46:30",
+   "shift": 2,
+   "pump": 11,
+   "operator": "AZKA",
+   "product": "PERTALITE",
+   "volumeLiters": 3.3,
+   "priceNonSubsidized": 15892,
+   "subsidyPerLiter": 5892,
+   "pricePerLiter": 10000,
+   "totalNonSubsidized": 52443,
+   "subsidyTotal": 19443,
+   "amountPaid": 33000
+  }
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "fuel_retail",
+  "fields": {
+   "merchantId": "31.411.02",
+   "transactionNo": "639046",
+   "transactionAt": "2026-09-28T08:35:17",
+   "shift": 1,
+   "pump": 15,
+   "operator": "N SITI YULIANI",
+   "product": "PERTAMAX",
+   "pricePerLiter": 15950,
+   "volumeLiters": 18.8,
+   "totalPrinted": 300000,
+   "amountClaimed": 188000,
+   "paymentMethod": "CASH"
+  }
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "toll",
+  "fields": {
+   "transactionDate": "2026-09-28",
+   "fare": 11000,
+   "balanceAfter": 48501,
+   "vehicleClass": "Gol 1"
+  },
+  "note": "fare is under a marker highlight; hour digit cut"
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "parking",
+  "fields": {
+   "merchantName": "PLAZA SENAYAN",
+   "entryAt": "2026-09-29T14:37:30",
+   "exitAt": "2026-09-29T17:51:11",
+   "durationMinutes": 193,
+   "fee": 17000,
+   "balanceAfter": 31501
+  }
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "fuel_retail",
+  "fields": {
+   "merchantId": "34.405.24",
+   "transactionNo": "7570612",
+   "transactionAt": "2026-10-02T22:49:04",
+   "shift": 3,
+   "pump": 11,
+   "operator": "M REZA",
+   "product": "PERTAMAX",
+   "pricePerLiter": 15950,
+   "volumeLiters": 20.0,
+   "totalPrinted": 319000,
+   "amountClaimed": 200000,
+   "paymentMethod": "CASH"
+  }
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "toll",
+  "fields": {
+   "gate": "PASTEUR",
+   "fare": 75500,
+   "balanceAfter": 59501,
+   "transactionTime": "08:50:22",
+   "vehicleClass": "Gol 1"
+  },
+  "note": "day of month hidden under another receipt; fare under marker"
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "parking",
+  "fields": {
+   "plateNumber": "D 1099 SBE",
+   "entryAt": "2026-10-01T08:10:45",
+   "exitAt": "2026-10-01T15:39:26",
+   "durationMinutes": 449,
+   "fee": 33000,
+   "balanceAfter": 18501
+  }
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "toll",
+  "fields": {
+   "transactionDate": "2026-10-02",
+   "fare": 11000,
+   "balanceAfter": 107501,
+   "vehicleClass": "Gol 1"
+  },
+  "note": "year digit cut; fare under marker, 'Rp11000' once the marker tone is removed (same flat tariff as the Halim slip, and 18,501 + 100,000 top-up - 11,000 = 107,501)"
+ },
+ {
+  "file": "page2.jpg",
+  "docType": "kwitansi",
+  "fields": {
+   "receivedFrom": "PT. Prambanan Kencana",
+   "amount": 600000,
+   "transactionDate": "2026-10-02"
+  },
+  "note": "fully handwritten"
+ }
+]

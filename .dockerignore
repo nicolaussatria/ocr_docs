@@ -1,0 +1,6 @@
+tests/
+samples/
+clients/
+docs/
+**/__pycache__
+.pytest_cache

@@ -1,0 +1,553 @@
+{
+  "$defs": {
+    "CategoryTotal": {
+      "properties": {
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        },
+        "amount": {
+          "title": "Amount",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "count",
+        "amount"
+      ],
+      "title": "CategoryTotal",
+      "type": "object"
+    },
+    "CheckOut": {
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "warn",
+            "skip"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "fields": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "status",
+        "message"
+      ],
+      "title": "CheckOut",
+      "type": "object"
+    },
+    "FieldOut": {
+      "properties": {
+        "value": {
+          "description": "Normalised value (int for IDR amounts, ISO-8601 for dates/times)",
+          "title": "Value"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "source": {
+          "description": "ocr | ocr_refined (re-read with image variants) | derived (computed from other fields) | corrected (one-digit OCR fix proven by arithmetic) | inferred (batch context, e.g. card balance chain) | vlm",
+          "enum": [
+            "ocr",
+            "ocr_refined",
+            "derived",
+            "corrected",
+            "inferred",
+            "batch",
+            "vlm"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "OCR text the value came from",
+          "title": "Raw"
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "[x0,y0,x1,y1] in the ORIGINAL image pixels",
+          "title": "Bbox"
+        }
+      },
+      "required": [
+        "value",
+        "confidence",
+        "source"
+      ],
+      "title": "FieldOut",
+      "type": "object"
+    },
+    "PageOut": {
+      "properties": {
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "page": {
+          "title": "Page",
+          "type": "integer"
+        },
+        "width": {
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "title": "Height",
+          "type": "integer"
+        },
+        "rotation": {
+          "description": "Clockwise degrees applied to make the page upright",
+          "title": "Rotation",
+          "type": "integer"
+        },
+        "ocrLines": {
+          "title": "Ocrlines",
+          "type": "integer"
+        },
+        "receiptIds": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Receiptids",
+          "type": "array"
+        },
+        "elapsedMs": {
+          "title": "Elapsedms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "file",
+        "page",
+        "width",
+        "height",
+        "rotation",
+        "ocrLines",
+        "receiptIds",
+        "elapsedMs"
+      ],
+      "title": "PageOut",
+      "type": "object"
+    },
+    "ReceiptOut": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "docType": {
+          "description": "fuel_subsidized | fuel_retail | fuel_cash_voucher | toll | parking | kwitansi | mobile_topup | receipt (any other receipt or invoice with labelled money rows) | unknown",
+          "title": "Doctype",
+          "type": "string"
+        },
+        "category": {
+          "description": "fuel | toll | parking | pulsa | vehicle_service | internet | utilities | lodging | transport | medical | office | meal | other - what the expense was for; the last eight are read off the words of a general receipt",
+          "title": "Category",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "verified",
+            "needs_review"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "number"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Evidence-backed transaction amount in IDR",
+          "title": "Amount"
+        },
+        "claimedAmount": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Handwritten amount written over the printed one, if any",
+          "title": "Claimedamount"
+        },
+        "suggestedAmount": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Best guess when `amount` is null because it could not be read reliably. Never part of the totals: pre-fill it for a person to confirm",
+          "title": "Suggestedamount"
+        },
+        "currency": {
+          "default": "IDR",
+          "title": "Currency",
+          "type": "string"
+        },
+        "transactionDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transactiondate"
+        },
+        "transactionAt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transactionat"
+        },
+        "merchantName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Merchantname"
+        },
+        "merchantId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Merchantid"
+        },
+        "handwritten": {
+          "default": false,
+          "title": "Handwritten",
+          "type": "boolean"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "One line saying what the receipt is ('BBM Pertalite 3,2 L - SPBU Ciracas'): a starting point for a remark / 'Keterangan' column, not a checked value",
+          "title": "Description"
+        },
+        "fingerprint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Stable hash for duplicate detection across uploads",
+          "title": "Fingerprint"
+        },
+        "bbox": {
+          "description": "Receipt region in the ORIGINAL image pixels",
+          "items": {
+            "type": "integer"
+          },
+          "title": "Bbox",
+          "type": "array"
+        },
+        "fields": {
+          "additionalProperties": {
+            "$ref": "#/$defs/FieldOut"
+          },
+          "default": {},
+          "title": "Fields",
+          "type": "object"
+        },
+        "checks": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CheckOut"
+          },
+          "title": "Checks",
+          "type": "array"
+        },
+        "reviewReasons": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Reviewreasons",
+          "type": "array"
+        },
+        "image": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Base64 JPEG crop (upright) when includeImages=true",
+          "title": "Image"
+        },
+        "rawText": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rawtext"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "docType",
+        "category",
+        "status",
+        "confidence",
+        "bbox"
+      ],
+      "title": "ReceiptOut",
+      "type": "object"
+    },
+    "SourceRef": {
+      "properties": {
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "page": {
+          "title": "Page",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "file",
+        "page"
+      ],
+      "title": "SourceRef",
+      "type": "object"
+    },
+    "Summary": {
+      "properties": {
+        "receiptCount": {
+          "title": "Receiptcount",
+          "type": "integer"
+        },
+        "verifiedCount": {
+          "title": "Verifiedcount",
+          "type": "integer"
+        },
+        "needsReviewCount": {
+          "title": "Needsreviewcount",
+          "type": "integer"
+        },
+        "totalAmount": {
+          "description": "Sum of `amount` over receipts that have one",
+          "title": "Totalamount",
+          "type": "integer"
+        },
+        "verifiedAmount": {
+          "title": "Verifiedamount",
+          "type": "integer"
+        },
+        "byCategory": {
+          "additionalProperties": {
+            "$ref": "#/$defs/CategoryTotal"
+          },
+          "title": "Bycategory",
+          "type": "object"
+        },
+        "dateFrom": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Datefrom"
+        },
+        "dateTo": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dateto"
+        }
+      },
+      "required": [
+        "receiptCount",
+        "verifiedCount",
+        "needsReviewCount",
+        "totalAmount",
+        "verifiedAmount",
+        "byCategory"
+      ],
+      "title": "Summary",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schemaVersion": {
+      "default": "1.0",
+      "title": "Schemaversion",
+      "type": "string"
+    },
+    "requestId": {
+      "title": "Requestid",
+      "type": "string"
+    },
+    "engine": {
+      "title": "Engine",
+      "type": "string"
+    },
+    "processedAt": {
+      "title": "Processedat",
+      "type": "string"
+    },
+    "elapsedMs": {
+      "title": "Elapsedms",
+      "type": "integer"
+    },
+    "summary": {
+      "$ref": "#/$defs/Summary"
+    },
+    "receipts": {
+      "items": {
+        "$ref": "#/$defs/ReceiptOut"
+      },
+      "title": "Receipts",
+      "type": "array"
+    },
+    "pages": {
+      "items": {
+        "$ref": "#/$defs/PageOut"
+      },
+      "title": "Pages",
+      "type": "array"
+    },
+    "batchChecks": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/CheckOut"
+      },
+      "title": "Batchchecks",
+      "type": "array"
+    },
+    "warnings": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "requestId",
+    "engine",
+    "processedAt",
+    "elapsedMs",
+    "summary",
+    "receipts",
+    "pages"
+  ],
+  "title": "ScanResult",
+  "type": "object"
+}

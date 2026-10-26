@@ -1,0 +1,3925 @@
+{
+  "schemaVersion": "1.0",
+  "requestId": "bbfefd8abee9",
+  "engine": "rapidocr ? / PP-OCRv6-small",
+  "processedAt": "2026-10-13T07:30:09+00:00",
+  "elapsedMs": 7750,
+  "summary": {
+    "receiptCount": 17,
+    "verifiedCount": 11,
+    "needsReviewCount": 6,
+    "totalAmount": 1660450,
+    "verifiedAmount": 319950,
+    "byCategory": {
+      "fuel": {
+        "count": 11,
+        "amount": 912950
+      },
+      "toll": {
+        "count": 3,
+        "amount": 97500
+      },
+      "parking": {
+        "count": 2,
+        "amount": 50000
+      },
+      "pulsa": {
+        "count": 1,
+        "amount": 600000
+      }
+    },
+    "dateFrom": "2026-09-02",
+    "dateTo": "2026-10-02"
+  },
+  "receipts": [
+    {
+      "id": "r1",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.98,
+      "amount": 32050,
+      "currency": "IDR",
+      "transactionDate": "2026-09-02",
+      "transactionAt": "2026-09-02T17:10:46",
+      "merchantName": "SPBU KRAMAT JATI NO.109",
+      "merchantId": "34.135.05",
+      "handwritten": false,
+      "description": "BBM Pertalite 3,2 L - SPBU Kramat Jati No.109",
+      "fingerprint": "693b10f242b632a3",
+      "bbox": [
+        1111,
+        1,
+        1712,
+        455
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.135.05",
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "3413505",
+          "bbox": [
+            1644,
+            183,
+            1681,
+            296
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU KRAMAT JATI NO.109",
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "SPBU KRAMAT JATI NO.109",
+          "bbox": [
+            1615,
+            68,
+            1656,
+            406
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL. KRAMAT JATI RAYA NO109-110",
+          "confidence": 0.996,
+          "source": "ocr",
+          "raw": "JL. KRAMAT JATI RAYA NO109-110",
+          "bbox": [
+            1587,
+            19,
+            1626,
+            454
+          ]
+        },
+        "shift": {
+          "value": 3,
+          "confidence": 0.987,
+          "source": "ocr",
+          "bbox": [
+            1565,
+            6,
+            1599,
+            135
+          ]
+        },
+        "transactionNo": {
+          "value": "2766899",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            1557,
+            189,
+            1596,
+            455
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-02",
+          "confidence": 0.98,
+          "source": "ocr",
+          "raw": "02/09/2026 17:10:46",
+          "bbox": [
+            1528,
+            1,
+            1573,
+            389
+          ]
+        },
+        "transactionTime": {
+          "value": "17:10:46",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1528,
+            1,
+            1573,
+            389
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-02T17:10:46",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1528,
+            1,
+            1573,
+            389
+          ]
+        },
+        "pump": {
+          "value": 6,
+          "confidence": 1.0,
+          "source": "ocr",
+          "bbox": [
+            1474,
+            2,
+            1515,
+            237
+          ]
+        },
+        "operator": {
+          "value": "OPERATOR",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "OPERATOR",
+          "bbox": [
+            1445,
+            3,
+            1486,
+            338
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "PERTALITE",
+          "bbox": [
+            1416,
+            2,
+            1457,
+            353
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 14874,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "14.874",
+          "bbox": [
+            1304,
+            3,
+            1344,
+            408
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 4874,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "4.874",
+          "bbox": [
+            1274,
+            5,
+            1315,
+            407
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "10,000",
+          "bbox": [
+            1245,
+            3,
+            1283,
+            406
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 47666,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "47,666",
+          "bbox": [
+            1161,
+            7,
+            1199,
+            406
+          ]
+        },
+        "subsidyTotal": {
+          "value": 15616,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "15,616",
+          "bbox": [
+            1131,
+            5,
+            1172,
+            408
+          ]
+        },
+        "amountPaid": {
+          "value": 32050,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "32.050",
+          "bbox": [
+            1111,
+            2,
+            1145,
+            407
+          ]
+        },
+        "volumeLiters": {
+          "value": 3.2,
+          "confidence": 0.958,
+          "source": "ocr",
+          "raw": "3.20 liter",
+          "bbox": [
+            1386,
+            2,
+            1428,
+            363
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 2 receipts from 34.135.05",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r2",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.976,
+      "amount": 32900,
+      "currency": "IDR",
+      "transactionDate": "2026-09-03",
+      "transactionAt": "2026-09-03T22:16:47",
+      "merchantName": "SPBU CIRACAS",
+      "merchantId": "34.137.03",
+      "handwritten": false,
+      "description": "BBM Pertalite 3,29 L - SPBU Ciracas",
+      "fingerprint": "0075bfba9313ab4c",
+      "bbox": [
+        1061,
+        455,
+        1704,
+        850
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.137.03",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "3413703",
+          "bbox": [
+            1623,
+            629,
+            1655,
+            725
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU CIRACAS",
+          "confidence": 0.939,
+          "source": "ocr",
+          "raw": "SPBU C1RACAS",
+          "bbox": [
+            1593,
+            598,
+            1624,
+            755
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL. RAYA CIRACAS",
+          "confidence": 0.994,
+          "source": "ocr",
+          "raw": "JL. RAYA CIRACAS",
+          "bbox": [
+            1565,
+            575,
+            1596,
+            780
+          ]
+        },
+        "shift": {
+          "value": 2,
+          "confidence": 0.944,
+          "source": "ocr",
+          "bbox": [
+            1511,
+            457,
+            1542,
+            572
+          ]
+        },
+        "transactionNo": {
+          "value": "2645901",
+          "confidence": 0.948,
+          "source": "ocr",
+          "bbox": [
+            1505,
+            615,
+            1542,
+            847
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-03",
+          "confidence": 0.976,
+          "source": "ocr",
+          "raw": "03/09/2026 22:16:47",
+          "bbox": [
+            1478,
+            455,
+            1515,
+            790
+          ]
+        },
+        "transactionTime": {
+          "value": "22:16:47",
+          "confidence": 0.976,
+          "source": "ocr",
+          "bbox": [
+            1478,
+            455,
+            1515,
+            790
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-03T22:16:47",
+          "confidence": 0.976,
+          "source": "ocr",
+          "bbox": [
+            1478,
+            455,
+            1515,
+            790
+          ]
+        },
+        "pump": {
+          "value": 11,
+          "confidence": 1.0,
+          "source": "ocr",
+          "bbox": [
+            1422,
+            457,
+            1460,
+            671
+          ]
+        },
+        "operator": {
+          "value": "AZKA",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "AZKA",
+          "bbox": [
+            1395,
+            460,
+            1428,
+            697
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "PERTALITE",
+          "bbox": [
+            1364,
+            462,
+            1401,
+            763
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 14874,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "14.874",
+          "bbox": [
+            1254,
+            462,
+            1289,
+            814
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 4874,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "4.874",
+          "bbox": [
+            1226,
+            460,
+            1263,
+            814
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "10.000",
+          "bbox": [
+            1199,
+            463,
+            1232,
+            815
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 48935,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "48.935",
+          "bbox": [
+            1114,
+            464,
+            1146,
+            816
+          ]
+        },
+        "subsidyTotal": {
+          "value": 16035,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "16,035",
+          "bbox": [
+            1089,
+            464,
+            1120,
+            819
+          ]
+        },
+        "amountPaid": {
+          "value": 32900,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "32.900",
+          "bbox": [
+            1061,
+            463,
+            1095,
+            819
+          ]
+        },
+        "volumeLiters": {
+          "value": 3.29,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "3.29 liter",
+          "bbox": [
+            1337,
+            459,
+            1374,
+            769
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 6 receipts from 34.137.03",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r3",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.951,
+      "amount": 34000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-08",
+      "transactionAt": "2026-09-08T22:27:34",
+      "merchantName": "SPBU CIRACAS",
+      "merchantId": "34.137.03",
+      "handwritten": false,
+      "description": "BBM Pertalite 3,4 L - SPBU Ciracas",
+      "fingerprint": "defa728f6979a5bb",
+      "bbox": [
+        1071,
+        849,
+        1713,
+        1236
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.137.03",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "3413703",
+          "bbox": [
+            1634,
+            1016,
+            1666,
+            1110
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU CIRACAS",
+          "confidence": 0.994,
+          "source": "ocr",
+          "raw": "SPBU CIRACAS",
+          "bbox": [
+            1605,
+            986,
+            1635,
+            1139
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL. RAYA CIRACAS",
+          "confidence": 0.981,
+          "source": "ocr",
+          "raw": "JL. RAYA CIRACAS",
+          "bbox": [
+            1575,
+            965,
+            1606,
+            1164
+          ]
+        },
+        "shift": {
+          "value": 2,
+          "confidence": 0.8,
+          "source": "ocr"
+        },
+        "transactionNo": {
+          "value": "2669613",
+          "confidence": 0.903,
+          "source": "ocr",
+          "bbox": [
+            1516,
+            1002,
+            1552,
+            1236
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-08",
+          "confidence": 0.951,
+          "source": "ocr",
+          "raw": "27:34",
+          "bbox": [
+            1486,
+            849,
+            1524,
+            1177
+          ]
+        },
+        "transactionTime": {
+          "value": "22:27:34",
+          "confidence": 0.951,
+          "source": "ocr",
+          "bbox": [
+            1486,
+            849,
+            1524,
+            1177
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-08T22:27:34",
+          "confidence": 0.951,
+          "source": "ocr",
+          "bbox": [
+            1486,
+            849,
+            1524,
+            1177
+          ]
+        },
+        "pump": {
+          "value": 11,
+          "confidence": 0.982,
+          "source": "ocr",
+          "bbox": [
+            1429,
+            854,
+            1464,
+            1060
+          ]
+        },
+        "operator": {
+          "value": "MUHASAN BISRI",
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "MUHASAN BISRI",
+          "bbox": [
+            1402,
+            856,
+            1438,
+            1190
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "PERTALITE",
+          "bbox": [
+            1372,
+            858,
+            1406,
+            1146
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 15892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "15,892",
+          "bbox": [
+            1263,
+            863,
+            1296,
+            1198
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 5892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "5,892",
+          "bbox": [
+            1235,
+            864,
+            1268,
+            1199
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "10,000",
+          "bbox": [
+            1205,
+            863,
+            1242,
+            1201
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 54032,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "54,032",
+          "bbox": [
+            1125,
+            868,
+            1157,
+            1202
+          ]
+        },
+        "subsidyTotal": {
+          "value": 20032,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "20,032",
+          "bbox": [
+            1099,
+            871,
+            1129,
+            1202
+          ]
+        },
+        "amountPaid": {
+          "value": 34000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "34,000",
+          "bbox": [
+            1071,
+            871,
+            1104,
+            1203
+          ]
+        },
+        "volumeLiters": {
+          "value": 3.4,
+          "confidence": 0.975,
+          "source": "ocr",
+          "raw": "3.40 liter",
+          "bbox": [
+            1345,
+            859,
+            1379,
+            1155
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 6 receipts from 34.137.03",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r4",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_cash_voucher",
+      "category": "fuel",
+      "status": "needs_review",
+      "confidence": 0.0,
+      "amount": 35000,
+      "currency": "IDR",
+      "merchantName": "SPBU 34.13702",
+      "merchantId": "34.137.02",
+      "handwritten": true,
+      "description": "BBM Pertalite - SPBU 34.13702 (bon kontan)",
+      "fingerprint": "4d749e0c39af9e67",
+      "bbox": [
+        1118,
+        1285,
+        1719,
+        1965
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.137.02",
+          "confidence": 1.0,
+          "source": "ocr",
+          "bbox": [
+            1669,
+            1558,
+            1719,
+            1812
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU 34.13702",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "SPBU:34.13702",
+          "bbox": [
+            1669,
+            1558,
+            1719,
+            1812
+          ]
+        },
+        "items": {
+          "value": [
+            {
+              "product": "PERTALITE",
+              "amount": 35000
+            }
+          ],
+          "confidence": 0.607,
+          "source": "ocr"
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 0.7,
+          "source": "ocr"
+        },
+        "amount": {
+          "value": 35000,
+          "confidence": 0.607,
+          "source": "derived",
+          "raw": "sum of item lines"
+        }
+      },
+      "checks": [],
+      "reviewReasons": [
+        "Handwritten cash voucher (bon kontan) - verify liters, amount and date against the image",
+        "amount is derived (35000), not read directly - confirm",
+        "Missing transactionDate"
+      ]
+    },
+    {
+      "id": "r5",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.98,
+      "amount": 28000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-23",
+      "transactionAt": "2026-09-23T18:32:25",
+      "merchantName": "SPBU KRAMAT JATI NO.109",
+      "merchantId": "34.135.05",
+      "handwritten": false,
+      "description": "BBM Pertalite 2,8 L - SPBU Kramat Jati No.109",
+      "fingerprint": "830bbda5bb83408c",
+      "bbox": [
+        1108,
+        1990,
+        1715,
+        2366
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.135.05",
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "3413505",
+          "bbox": [
+            1638,
+            2147,
+            1669,
+            2235
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU KRAMAT JATI NO.109",
+          "confidence": 0.976,
+          "source": "ocr",
+          "raw": "SPBU KRAMAT JATI NO.109",
+          "bbox": [
+            1610,
+            2057,
+            1639,
+            2328
+          ]
+        },
+        "shift": {
+          "value": 3,
+          "confidence": 0.976,
+          "source": "ocr",
+          "bbox": [
+            1555,
+            1991,
+            1583,
+            2093
+          ]
+        },
+        "transactionNo": {
+          "value": "2848063",
+          "confidence": 0.961,
+          "source": "ocr",
+          "bbox": [
+            1553,
+            2133,
+            1583,
+            2352
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-23",
+          "confidence": 0.98,
+          "source": "ocr",
+          "raw": "23/09/2026 18:32:25",
+          "bbox": [
+            1528,
+            2061,
+            1553,
+            2294
+          ]
+        },
+        "transactionTime": {
+          "value": "18:32:25",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1528,
+            2061,
+            1553,
+            2294
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-23T18:32:25",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1528,
+            2061,
+            1553,
+            2294
+          ]
+        },
+        "operator": {
+          "value": "OPERATOR",
+          "confidence": 0.998,
+          "source": "ocr",
+          "raw": "OPERATOR",
+          "bbox": [
+            1440,
+            1991,
+            1473,
+            2252
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "PERTALITE",
+          "bbox": [
+            1413,
+            1991,
+            1443,
+            2263
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 15892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "15,892",
+          "bbox": [
+            1301,
+            1993,
+            1336,
+            2311
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 5892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "5,892",
+          "bbox": [
+            1273,
+            1993,
+            1306,
+            2311
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "10,000",
+          "bbox": [
+            1242,
+            1991,
+            1281,
+            2313
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 44503,
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "44,503",
+          "bbox": [
+            1162,
+            1994,
+            1198,
+            2313
+          ]
+        },
+        "subsidyTotal": {
+          "value": 16503,
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "16,503",
+          "bbox": [
+            1135,
+            1995,
+            1171,
+            2313
+          ]
+        },
+        "amountPaid": {
+          "value": 28000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "28,000",
+          "bbox": [
+            1108,
+            1995,
+            1144,
+            2315
+          ]
+        },
+        "volumeLiters": {
+          "value": 2.8,
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "2.80liter",
+          "bbox": [
+            1384,
+            1991,
+            1416,
+            2270
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 2 receipts from 34.135.05",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r6",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.97,
+      "amount": 34000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-24",
+      "transactionAt": "2026-09-24T21:38:53",
+      "merchantName": "SPBU CIRACAS",
+      "merchantId": "34.137.03",
+      "handwritten": false,
+      "description": "BBM Pertalite 3,4 L - SPBU Ciracas",
+      "fingerprint": "fd0d3e4fb7d42009",
+      "bbox": [
+        440,
+        0,
+        1104,
+        431
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.137.03",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "3413703",
+          "bbox": [
+            1024,
+            198,
+            1056,
+            298
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU CIRACAS",
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "SPBU CIRACAS",
+          "bbox": [
+            997,
+            163,
+            1027,
+            331
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL",
+          "confidence": 0.969,
+          "source": "ocr",
+          "raw": "JL",
+          "bbox": [
+            970,
+            138,
+            995,
+            168
+          ]
+        },
+        "shift": {
+          "value": 2,
+          "confidence": 0.958,
+          "source": "ocr",
+          "bbox": [
+            911,
+            1,
+            942,
+            127
+          ]
+        },
+        "transactionNo": {
+          "value": "2739357",
+          "confidence": 0.969,
+          "source": "ocr",
+          "bbox": [
+            910,
+            181,
+            943,
+            431
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-24",
+          "confidence": 0.97,
+          "source": "ocr",
+          "raw": "24/09/202621:38:53",
+          "bbox": [
+            880,
+            0,
+            916,
+            368
+          ]
+        },
+        "transactionTime": {
+          "value": "21:38:53",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            880,
+            0,
+            916,
+            368
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-24T21:38:53",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            880,
+            0,
+            916,
+            368
+          ]
+        },
+        "pump": {
+          "value": 12,
+          "confidence": 1.0,
+          "source": "ocr",
+          "bbox": [
+            820,
+            1,
+            855,
+            237
+          ]
+        },
+        "operator": {
+          "value": "NUR AFIFAH",
+          "confidence": 0.971,
+          "source": "ocr",
+          "raw": "NUR AFIFAH",
+          "bbox": [
+            792,
+            2,
+            828,
+            344
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "PERTALITE",
+          "bbox": [
+            766,
+            3,
+            801,
+            331
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 15892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "15,892",
+          "bbox": [
+            649,
+            2,
+            686,
+            388
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 5892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "5.892",
+          "bbox": [
+            615,
+            2,
+            658,
+            388
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "10,000",
+          "bbox": [
+            588,
+            2,
+            629,
+            388
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 54032,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "54.032",
+          "bbox": [
+            498,
+            3,
+            542,
+            389
+          ]
+        },
+        "subsidyTotal": {
+          "value": 20032,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "20.032",
+          "bbox": [
+            469,
+            3,
+            513,
+            390
+          ]
+        },
+        "amountPaid": {
+          "value": 34000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "34.000",
+          "bbox": [
+            440,
+            2,
+            484,
+            390
+          ]
+        },
+        "volumeLiters": {
+          "value": 3.4,
+          "confidence": 0.965,
+          "source": "ocr",
+          "raw": "3.40 liter",
+          "bbox": [
+            737,
+            2,
+            771,
+            344
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 6 receipts from 34.137.03",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r7",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.98,
+      "amount": 33000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-25",
+      "transactionAt": "2026-09-25T21:30:14",
+      "merchantName": "SPBU CIRACAS",
+      "merchantId": "34.137.03",
+      "handwritten": false,
+      "description": "BBM Pertalite 3,3 L - SPBU Ciracas",
+      "fingerprint": "78dbfde41b096980",
+      "bbox": [
+        394,
+        438,
+        1052,
+        847
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.137.03",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "3413703",
+          "bbox": [
+            966,
+            618,
+            1001,
+            718
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU CIRACAS",
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "SPBU CIRACAS",
+          "bbox": [
+            937,
+            585,
+            975,
+            751
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL. RAYA CIRACAS",
+          "confidence": 0.984,
+          "source": "ocr",
+          "raw": "JL. RAYA CIRACAS",
+          "bbox": [
+            908,
+            562,
+            946,
+            776
+          ]
+        },
+        "shift": {
+          "value": 2,
+          "confidence": 0.942,
+          "source": "ocr",
+          "bbox": [
+            851,
+            440,
+            884,
+            557
+          ]
+        },
+        "transactionNo": {
+          "value": "2743859",
+          "confidence": 0.962,
+          "source": "ocr",
+          "bbox": [
+            852,
+            606,
+            892,
+            847
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-25",
+          "confidence": 0.98,
+          "source": "ocr",
+          "raw": "25/09/2026 21:30:14",
+          "bbox": [
+            821,
+            438,
+            864,
+            788
+          ]
+        },
+        "transactionTime": {
+          "value": "21:30:14",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            821,
+            438,
+            864,
+            788
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-25T21:30:14",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            821,
+            438,
+            864,
+            788
+          ]
+        },
+        "pump": {
+          "value": 12,
+          "confidence": 0.983,
+          "source": "ocr",
+          "bbox": [
+            764,
+            442,
+            803,
+            666
+          ]
+        },
+        "operator": {
+          "value": "ANISAH FITRIYANI",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "ANISAH FITRIYANI",
+          "bbox": [
+            737,
+            446,
+            782,
+            838
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "PERTALITE",
+          "bbox": [
+            707,
+            445,
+            751,
+            754
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 15892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "15,892",
+          "bbox": [
+            594,
+            447,
+            642,
+            810
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 5892,
+          "confidence": 0.996,
+          "source": "ocr",
+          "raw": "5,892",
+          "bbox": [
+            567,
+            449,
+            610,
+            808
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "10,000",
+          "bbox": [
+            535,
+            447,
+            585,
+            810
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 52443,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "52,443",
+          "bbox": [
+            450,
+            450,
+            500,
+            815
+          ]
+        },
+        "subsidyTotal": {
+          "value": 19443,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "19.443",
+          "bbox": [
+            423,
+            454,
+            471,
+            815
+          ]
+        },
+        "amountPaid": {
+          "value": 33000,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "33,000",
+          "bbox": [
+            394,
+            453,
+            445,
+            817
+          ]
+        },
+        "volumeLiters": {
+          "value": 3.3,
+          "confidence": 0.95,
+          "source": "ocr",
+          "raw": "3.30 liter",
+          "bbox": [
+            677,
+            444,
+            723,
+            764
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 6 receipts from 34.137.03",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r8",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.98,
+      "amount": 32000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-28",
+      "transactionAt": "2026-09-28T22:19:17",
+      "merchantName": "SPBU CIRACAS",
+      "merchantId": "34.137.03",
+      "handwritten": false,
+      "description": "BBM Pertalite 3,2 L - SPBU Ciracas",
+      "fingerprint": "23ed8bfea6bb2101",
+      "bbox": [
+        409,
+        849,
+        1049,
+        1234
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.137.03",
+          "confidence": 0.996,
+          "source": "ocr",
+          "raw": "3413703",
+          "bbox": [
+            969,
+            1017,
+            999,
+            1111
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU CIRACAS",
+          "confidence": 0.996,
+          "source": "ocr",
+          "raw": "SPBU CIRACAS",
+          "bbox": [
+            942,
+            986,
+            975,
+            1141
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL. RAYA CIRACAS",
+          "confidence": 0.996,
+          "source": "ocr",
+          "raw": "JL. RAYA CIRACAS",
+          "bbox": [
+            914,
+            965,
+            947,
+            1165
+          ]
+        },
+        "shift": {
+          "value": 2,
+          "confidence": 0.967,
+          "source": "ocr",
+          "bbox": [
+            856,
+            849,
+            890,
+            962
+          ]
+        },
+        "transactionNo": {
+          "value": "2757904",
+          "confidence": 0.996,
+          "source": "ocr",
+          "bbox": [
+            860,
+            1006,
+            893,
+            1234
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-28",
+          "confidence": 0.98,
+          "source": "ocr",
+          "raw": "28/09/2026 22:19:17",
+          "bbox": [
+            828,
+            849,
+            865,
+            1175
+          ]
+        },
+        "transactionTime": {
+          "value": "22:19:17",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            828,
+            849,
+            865,
+            1175
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-28T22:19:17",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            828,
+            849,
+            865,
+            1175
+          ]
+        },
+        "pump": {
+          "value": 11,
+          "confidence": 0.986,
+          "source": "ocr",
+          "bbox": [
+            770,
+            850,
+            809,
+            1059
+          ]
+        },
+        "operator": {
+          "value": "ARLIS",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "ARLIS",
+          "bbox": [
+            741,
+            850,
+            780,
+            1095
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 0.979,
+          "source": "ocr",
+          "raw": ": PERTALITE",
+          "bbox": [
+            715,
+            854,
+            754,
+            1143
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 15892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "15,892",
+          "bbox": [
+            605,
+            859,
+            649,
+            1195
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 5892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "5,892",
+          "bbox": [
+            577,
+            858,
+            620,
+            1195
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "10,000",
+          "bbox": [
+            548,
+            859,
+            590,
+            1197
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 50854,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "50,854",
+          "bbox": [
+            464,
+            868,
+            508,
+            1199
+          ]
+        },
+        "subsidyTotal": {
+          "value": 18854,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "18,854",
+          "bbox": [
+            435,
+            862,
+            481,
+            1199
+          ]
+        },
+        "amountPaid": {
+          "value": 32000,
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "32,000",
+          "bbox": [
+            409,
+            858,
+            452,
+            1199
+          ]
+        },
+        "volumeLiters": {
+          "value": 3.2,
+          "confidence": 0.972,
+          "source": "ocr",
+          "raw": ": 3.20 liter",
+          "bbox": [
+            687,
+            853,
+            725,
+            1152
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 6 receipts from 34.137.03",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r9",
+      "source": {
+        "file": "page1.jpg",
+        "page": 1
+      },
+      "docType": "fuel_subsidized",
+      "category": "fuel",
+      "status": "verified",
+      "confidence": 0.98,
+      "amount": 33000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-30",
+      "transactionAt": "2026-09-30T21:46:30",
+      "merchantName": "SPBU CIRACAS",
+      "merchantId": "34.137.03",
+      "handwritten": false,
+      "description": "BBM Pertalite 3,3 L - SPBU Ciracas",
+      "fingerprint": "59d906a91483697f",
+      "bbox": [
+        430,
+        1238,
+        1054,
+        1611
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.137.03",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "3413703",
+          "bbox": [
+            978,
+            1400,
+            1008,
+            1491
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU CIRACAS",
+          "confidence": 0.972,
+          "source": "ocr",
+          "raw": "SPBU CIRACAS",
+          "bbox": [
+            949,
+            1372,
+            979,
+            1521
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL. RAYA CIRACAS",
+          "confidence": 0.99,
+          "source": "ocr",
+          "raw": "JL. RAYA CIRACAS",
+          "bbox": [
+            921,
+            1350,
+            954,
+            1546
+          ]
+        },
+        "shift": {
+          "value": 2,
+          "confidence": 0.971,
+          "source": "ocr",
+          "bbox": [
+            867,
+            1239,
+            894,
+            1345
+          ]
+        },
+        "transactionNo": {
+          "value": "2766967",
+          "confidence": 0.994,
+          "source": "ocr",
+          "bbox": [
+            867,
+            1389,
+            899,
+            1611
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-30",
+          "confidence": 0.98,
+          "source": "ocr",
+          "raw": "30/09/202621:46:30",
+          "bbox": [
+            839,
+            1238,
+            871,
+            1554
+          ]
+        },
+        "transactionTime": {
+          "value": "21:46:30",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            839,
+            1238,
+            871,
+            1554
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-30T21:46:30",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            839,
+            1238,
+            871,
+            1554
+          ]
+        },
+        "pump": {
+          "value": 11,
+          "confidence": 0.969,
+          "source": "ocr",
+          "bbox": [
+            784,
+            1242,
+            815,
+            1438
+          ]
+        },
+        "operator": {
+          "value": "AZKA",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "AZKA",
+          "bbox": [
+            755,
+            1243,
+            789,
+            1463
+          ]
+        },
+        "product": {
+          "value": "PERTALITE",
+          "confidence": 0.993,
+          "source": "ocr",
+          "raw": ":PERTALITE",
+          "bbox": [
+            731,
+            1246,
+            764,
+            1523
+          ]
+        },
+        "priceNonSubsidized": {
+          "value": 15892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "15,892",
+          "bbox": [
+            620,
+            1245,
+            659,
+            1571
+          ]
+        },
+        "subsidyPerLiter": {
+          "value": 5892,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "5,892",
+          "bbox": [
+            594,
+            1245,
+            632,
+            1571
+          ]
+        },
+        "pricePerLiter": {
+          "value": 10000,
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "10,000",
+          "bbox": [
+            565,
+            1245,
+            603,
+            1572
+          ]
+        },
+        "totalNonSubsidized": {
+          "value": 52443,
+          "confidence": 0.998,
+          "source": "ocr",
+          "raw": "52,443",
+          "bbox": [
+            485,
+            1246,
+            522,
+            1574
+          ]
+        },
+        "subsidyTotal": {
+          "value": 19443,
+          "confidence": 0.995,
+          "source": "ocr",
+          "raw": "19,443",
+          "bbox": [
+            458,
+            1249,
+            496,
+            1572
+          ]
+        },
+        "amountPaid": {
+          "value": 33000,
+          "confidence": 0.997,
+          "source": "ocr",
+          "raw": "33,000",
+          "bbox": [
+            430,
+            1245,
+            468,
+            1576
+          ]
+        },
+        "volumeLiters": {
+          "value": 3.3,
+          "confidence": 0.971,
+          "source": "ocr",
+          "raw": ": 3.30 liter",
+          "bbox": [
+            704,
+            1245,
+            738,
+            1532
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "PRICE_MINUS_SUBSIDY_EQ_PRICE",
+          "status": "pass",
+          "message": "Harga Non Subsidi - Subsidi/liter = Harga Jual",
+          "fields": [
+            "priceNonSubsidized",
+            "subsidyPerLiter",
+            "pricePerLiter"
+          ]
+        },
+        {
+          "code": "TOTAL_MINUS_SUBSIDY_EQ_PAID",
+          "status": "pass",
+          "message": "Tanpa Subsidi - Subsidi Pemerintah = Dibayar Konsumen",
+          "fields": [
+            "totalNonSubsidized",
+            "subsidyTotal",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_PRICE_EQ_PAID",
+          "status": "pass",
+          "message": "Volume x Harga Jual ~ Dibayar Konsumen",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "amountPaid"
+          ]
+        },
+        {
+          "code": "VOLUME_X_NONSUB_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga Non Subsidi ~ Tanpa Subsidi",
+          "fields": [
+            "volumeLiters",
+            "priceNonSubsidized",
+            "totalNonSubsidized"
+          ]
+        },
+        {
+          "code": "VOLUME_X_SUBSIDY_EQ_SUBSIDY_TOTAL",
+          "status": "pass",
+          "message": "Volume x Subsidi/liter ~ Subsidi Pemerintah",
+          "fields": [
+            "volumeLiters",
+            "subsidyPerLiter",
+            "subsidyTotal"
+          ]
+        },
+        {
+          "code": "STATION_SEQUENCE",
+          "status": "pass",
+          "message": "Transaction no. increases with time across 6 receipts from 34.137.03",
+          "fields": [
+            "transactionNo",
+            "transactionAt"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r10",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "fuel_retail",
+      "category": "fuel",
+      "status": "needs_review",
+      "confidence": 0.95,
+      "amount": 300000,
+      "claimedAmount": 188000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-28",
+      "transactionAt": "2026-09-28T08:35:17",
+      "merchantName": "SPBU CIPULARANG B",
+      "merchantId": "31.411.02",
+      "handwritten": true,
+      "description": "BBM Pertamax 18,8 L - SPBU Cipularang B",
+      "fingerprint": "4b18ed091a30e8ad",
+      "bbox": [
+        971,
+        63,
+        1655,
+        1173
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "31.411.02",
+          "confidence": 0.949,
+          "source": "ocr",
+          "raw": "31.411.02",
+          "bbox": [
+            1446,
+            331,
+            1516,
+            472
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU CIPULARANG B",
+          "confidence": 0.996,
+          "source": "ocr",
+          "raw": "SPBU Cipularang B",
+          "bbox": [
+            1411,
+            283,
+            1459,
+            520
+          ]
+        },
+        "merchantAddress": {
+          "value": "J1. TOL PURBALEUNYI KM.88",
+          "confidence": 0.95,
+          "source": "ocr",
+          "raw": "J1. Tol Purbaleunyi KM.88",
+          "bbox": [
+            1379,
+            231,
+            1426,
+            568
+          ]
+        },
+        "shift": {
+          "value": 1,
+          "confidence": 0.956,
+          "source": "ocr",
+          "bbox": [
+            1311,
+            84,
+            1360,
+            485
+          ]
+        },
+        "transactionNo": {
+          "value": "639046",
+          "confidence": 0.85,
+          "source": "ocr"
+        },
+        "transactionDate": {
+          "value": "2026-09-28",
+          "confidence": 0.98,
+          "source": "ocr",
+          "raw": "28/09/2026 08:35:17",
+          "bbox": [
+            1279,
+            83,
+            1326,
+            445
+          ]
+        },
+        "transactionTime": {
+          "value": "08:35:17",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1279,
+            83,
+            1326,
+            445
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-28T08:35:17",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1279,
+            83,
+            1326,
+            445
+          ]
+        },
+        "pump": {
+          "value": 15,
+          "confidence": 0.993,
+          "source": "ocr",
+          "bbox": [
+            1216,
+            79,
+            1258,
+            302
+          ]
+        },
+        "operator": {
+          "value": "N SITI YULIANI",
+          "confidence": 0.987,
+          "source": "ocr",
+          "raw": ": N SITI YULIANI",
+          "bbox": [
+            1061,
+            70,
+            1106,
+            451
+          ]
+        },
+        "product": {
+          "value": "PERTAMAX",
+          "confidence": 0.986,
+          "source": "ocr",
+          "raw": "PERTAMAX",
+          "bbox": [
+            1185,
+            77,
+            1229,
+            379
+          ]
+        },
+        "paymentMethod": {
+          "value": "CASH",
+          "confidence": 0.95,
+          "source": "ocr"
+        },
+        "volumeLiters": {
+          "value": 18.8,
+          "confidence": 0.95,
+          "source": "ocr",
+          "raw": ": (l) 18.8",
+          "bbox": [
+            1124,
+            74,
+            1168,
+            377
+          ]
+        },
+        "pricePerLiter": {
+          "value": 15950,
+          "confidence": 0.976,
+          "source": "ocr",
+          "raw": "15,950",
+          "bbox": [
+            1153,
+            75,
+            1198,
+            403
+          ]
+        },
+        "totalPrinted": {
+          "value": 300000,
+          "confidence": 0.95,
+          "source": "ocr",
+          "raw": "300,000",
+          "bbox": [
+            1085,
+            67,
+            1149,
+            562
+          ]
+        },
+        "amountClaimed": {
+          "value": 188000,
+          "confidence": 0.5,
+          "source": "ocr",
+          "raw": "108.000, 188.000",
+          "bbox": [
+            994,
+            584,
+            1065,
+            720
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "VOLUME_X_PRICE_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga/Liter ~ Total Harga (printed)",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "totalPrinted"
+          ]
+        }
+      ],
+      "reviewReasons": [
+        "Handwritten amount 188,000 written over printed total 300,000 (OCR readings: 108,000 / 188,000) - confirm which amount is claimed"
+      ]
+    },
+    {
+      "id": "r11",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "toll",
+      "category": "toll",
+      "status": "verified",
+      "confidence": 0.918,
+      "amount": 11000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-28",
+      "transactionAt": "2026-09-28",
+      "merchantName": "JASA MARGA",
+      "handwritten": false,
+      "description": "Tol Jasa Marga",
+      "fingerprint": "6d615db15c6c4dd0",
+      "bbox": [
+        1324,
+        823,
+        1693,
+        1162
+      ],
+      "fields": {
+        "merchantName": {
+          "value": "JASA MARGA",
+          "confidence": 0.95,
+          "source": "ocr"
+        },
+        "vehicleClass": {
+          "value": "Gol 1",
+          "confidence": 0.895,
+          "source": "ocr",
+          "bbox": [
+            1357,
+            823,
+            1429,
+            1021
+          ]
+        },
+        "paymentMethod": {
+          "value": "BCA Flazz",
+          "confidence": 0.895,
+          "source": "ocr",
+          "bbox": [
+            1357,
+            823,
+            1429,
+            1021
+          ]
+        },
+        "fare": {
+          "value": 11000,
+          "confidence": 0.98,
+          "source": "ocr_refined",
+          "raw": "p11000",
+          "bbox": [
+            1357,
+            823,
+            1429,
+            1021
+          ]
+        },
+        "cardNumber": {
+          "value": "0145********6480",
+          "confidence": 0.9,
+          "source": "inferred",
+          "bbox": [
+            1324,
+            829,
+            1375,
+            1143
+          ]
+        },
+        "balanceAfter": {
+          "value": 48501,
+          "confidence": 0.97,
+          "source": "inferred",
+          "raw": "485?1",
+          "bbox": [
+            1324,
+            829,
+            1375,
+            1143
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-09-28",
+          "confidence": 0.918,
+          "source": "ocr",
+          "raw": "28/09/2026 :36:4 14/0./01",
+          "bbox": [
+            1447,
+            827,
+            1503,
+            1162
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-28",
+          "confidence": 0.918,
+          "source": "ocr",
+          "bbox": [
+            1447,
+            827,
+            1503,
+            1162
+          ]
+        },
+        "serialNo": {
+          "value": "01t:43 [07452/26[603",
+          "confidence": 0.922,
+          "source": "ocr",
+          "bbox": [
+            1413,
+            827,
+            1469,
+            1162
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "TOLL_FARE_PLAUSIBLE",
+          "status": "pass",
+          "message": "Toll fare is a multiple of Rp500 within 500..2,000,000",
+          "fields": [
+            "fare"
+          ]
+        },
+        {
+          "code": "CARD_BALANCE_CHAIN",
+          "status": "pass",
+          "message": "Balance 59,501 - 11,000 = 48,501 (previous: r14)",
+          "fields": [
+            "fare",
+            "balanceAfter"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r12",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "parking",
+      "category": "parking",
+      "status": "verified",
+      "confidence": 0.97,
+      "amount": 17000,
+      "currency": "IDR",
+      "transactionDate": "2026-09-29",
+      "transactionAt": "2026-09-29T17:51:11",
+      "merchantName": "PLAZASENAYAN",
+      "handwritten": false,
+      "description": "Parkir Plazasenayan",
+      "fingerprint": "aa54486c25633543",
+      "bbox": [
+        1199,
+        1312,
+        1728,
+        1799
+      ],
+      "fields": {
+        "merchantName": {
+          "value": "PLAZASENAYAN",
+          "confidence": 1.0,
+          "source": "ocr",
+          "bbox": [
+            1676,
+            1454,
+            1728,
+            1799
+          ]
+        },
+        "vehicleType": {
+          "value": "CAR",
+          "confidence": 1.0,
+          "source": "ocr"
+        },
+        "entryDate": {
+          "value": "2026-09-29",
+          "confidence": 0.95,
+          "source": "ocr",
+          "raw": ":29 Sep 2026 14:37:30 - M20",
+          "bbox": [
+            1543,
+            1317,
+            1601,
+            1789
+          ]
+        },
+        "entryTime": {
+          "value": "14:37:30",
+          "confidence": 0.95,
+          "source": "ocr",
+          "bbox": [
+            1543,
+            1317,
+            1601,
+            1789
+          ]
+        },
+        "entryAt": {
+          "value": "2026-09-29T14:37:30",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            1543,
+            1317,
+            1601,
+            1789
+          ]
+        },
+        "exitDate": {
+          "value": "2026-09-29",
+          "confidence": 0.97,
+          "source": "ocr",
+          "raw": ": 29 Sep 2026 17:51:11 - F21",
+          "bbox": [
+            1509,
+            1315,
+            1567,
+            1789
+          ]
+        },
+        "exitTime": {
+          "value": "17:51:11",
+          "confidence": 0.95,
+          "source": "ocr",
+          "bbox": [
+            1509,
+            1315,
+            1567,
+            1789
+          ]
+        },
+        "exitAt": {
+          "value": "2026-09-29T17:51:11",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            1509,
+            1315,
+            1567,
+            1789
+          ]
+        },
+        "durationMinutes": {
+          "value": 193,
+          "confidence": 0.996,
+          "source": "ocr",
+          "raw": "3 hours 13 minutes",
+          "bbox": [
+            1478,
+            1316,
+            1530,
+            1686
+          ]
+        },
+        "fee": {
+          "value": 17000,
+          "confidence": 0.992,
+          "source": "ocr",
+          "raw": "17.000",
+          "bbox": [
+            1410,
+            1315,
+            1469,
+            1669
+          ]
+        },
+        "balanceAfter": {
+          "value": 31501,
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "31.501",
+          "bbox": [
+            1350,
+            1316,
+            1400,
+            1674
+          ]
+        },
+        "cardNumber": {
+          "value": "0145********6480",
+          "confidence": 0.954,
+          "source": "ocr",
+          "bbox": [
+            1317,
+            1316,
+            1372,
+            1729
+          ]
+        },
+        "paymentMethod": {
+          "value": "BCA Flazz",
+          "confidence": 0.8,
+          "source": "ocr"
+        },
+        "transactionDate": {
+          "value": "2026-09-29",
+          "confidence": 0.97,
+          "source": "ocr",
+          "raw": ": 29 Sep 2026 17:51:11 - F21",
+          "bbox": [
+            1509,
+            1315,
+            1567,
+            1789
+          ]
+        },
+        "transactionTime": {
+          "value": "17:51:11",
+          "confidence": 0.95,
+          "source": "ocr",
+          "bbox": [
+            1509,
+            1315,
+            1567,
+            1789
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-09-29T17:51:11",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            1509,
+            1315,
+            1567,
+            1789
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "EXIT_AFTER_ENTRY",
+          "status": "pass",
+          "message": "Exit time is after entry time",
+          "fields": [
+            "entryAt",
+            "exitAt"
+          ]
+        },
+        {
+          "code": "DURATION_MATCHES",
+          "status": "pass",
+          "message": "Printed duration 193 min vs exit-entry 194 min",
+          "fields": [
+            "durationMinutes",
+            "entryAt",
+            "exitAt"
+          ]
+        },
+        {
+          "code": "CARD_BALANCE_CHAIN",
+          "status": "pass",
+          "message": "Balance 48,501 - 17,000 = 31,501 (previous: r11)",
+          "fields": [
+            "fee",
+            "balanceAfter"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r13",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "fuel_retail",
+      "category": "fuel",
+      "status": "needs_review",
+      "confidence": 0.97,
+      "amount": 319000,
+      "claimedAmount": 200000,
+      "currency": "IDR",
+      "transactionDate": "2026-10-02",
+      "transactionAt": "2026-10-02T22:49:04",
+      "merchantName": "SPBU SANGKURIANGCIMAHE",
+      "merchantId": "34.405.24",
+      "handwritten": true,
+      "description": "BBM Pertamax 20 L - SPBU Sangkuriangcimahe",
+      "fingerprint": "38ceeec8ce499271",
+      "bbox": [
+        1036,
+        2043,
+        1691,
+        2501
+      ],
+      "fields": {
+        "merchantId": {
+          "value": "34.405.24",
+          "confidence": 1.0,
+          "source": "ocr",
+          "raw": "3440524",
+          "bbox": [
+            1608,
+            2213,
+            1644,
+            2313
+          ]
+        },
+        "merchantName": {
+          "value": "SPBU SANGKURIANGCIMAHE",
+          "confidence": 0.94,
+          "source": "ocr",
+          "raw": "SPBU SANGKURIANGCIMAHE",
+          "bbox": [
+            1577,
+            2116,
+            1621,
+            2405
+          ]
+        },
+        "merchantAddress": {
+          "value": "JL. SANGKURIANG CIMAHE",
+          "confidence": 0.963,
+          "source": "ocr",
+          "raw": "JL. SANGKURIANG CIMAHE",
+          "bbox": [
+            1552,
+            2122,
+            1595,
+            2400
+          ]
+        },
+        "shift": {
+          "value": 3,
+          "confidence": 0.955,
+          "source": "ocr",
+          "bbox": [
+            1500,
+            2046,
+            1535,
+            2160
+          ]
+        },
+        "transactionNo": {
+          "value": "7570612",
+          "confidence": 0.982,
+          "source": "ocr",
+          "bbox": [
+            1507,
+            2202,
+            1544,
+            2434
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-10-02",
+          "confidence": 0.98,
+          "source": "ocr",
+          "raw": "02/10/202622:49:04",
+          "bbox": [
+            1473,
+            2043,
+            1518,
+            2377
+          ]
+        },
+        "transactionTime": {
+          "value": "22:49:04",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1473,
+            2043,
+            1518,
+            2377
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-10-02T22:49:04",
+          "confidence": 0.98,
+          "source": "ocr",
+          "bbox": [
+            1473,
+            2043,
+            1518,
+            2377
+          ]
+        },
+        "pump": {
+          "value": 11,
+          "confidence": 0.959,
+          "source": "ocr",
+          "bbox": [
+            1423,
+            2048,
+            1460,
+            2243
+          ]
+        },
+        "operator": {
+          "value": "M REZA",
+          "confidence": 0.916,
+          "source": "ocr",
+          "raw": "M REZA",
+          "bbox": [
+            1293,
+            2054,
+            1337,
+            2300
+          ]
+        },
+        "product": {
+          "value": "PERTAMAX",
+          "confidence": 0.976,
+          "source": "ocr",
+          "raw": "PERTAMAX",
+          "bbox": [
+            1396,
+            2047,
+            1440,
+            2318
+          ]
+        },
+        "paymentMethod": {
+          "value": "CASH",
+          "confidence": 0.95,
+          "source": "ocr"
+        },
+        "volumeLiters": {
+          "value": 20.0,
+          "confidence": 0.971,
+          "source": "ocr",
+          "raw": "(L) 20.00",
+          "bbox": [
+            1346,
+            2052,
+            1390,
+            2335
+          ]
+        },
+        "pricePerLiter": {
+          "value": 15950,
+          "confidence": 0.958,
+          "source": "ocr",
+          "raw": "15,950",
+          "bbox": [
+            1369,
+            2048,
+            1415,
+            2343
+          ]
+        },
+        "totalPrinted": {
+          "value": 319000,
+          "confidence": 0.97,
+          "source": "corrected",
+          "raw": "349.000",
+          "bbox": [
+            1316,
+            2048,
+            1374,
+            2483
+          ]
+        },
+        "amountClaimed": {
+          "value": 200000,
+          "confidence": 0.8,
+          "source": "ocr",
+          "raw": "200.000, 200.000",
+          "bbox": [
+            1249,
+            2048,
+            1374,
+            2501
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "VOLUME_X_PRICE_EQ_TOTAL",
+          "status": "pass",
+          "message": "Volume x Harga/Liter ~ Total Harga (printed)",
+          "fields": [
+            "volumeLiters",
+            "pricePerLiter",
+            "totalPrinted"
+          ]
+        }
+      ],
+      "reviewReasons": [
+        "Handwritten amount 200,000 written over printed total 319,000 - confirm which amount is claimed"
+      ]
+    },
+    {
+      "id": "r14",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "toll",
+      "category": "toll",
+      "status": "needs_review",
+      "confidence": 0.0,
+      "amount": 75500,
+      "currency": "IDR",
+      "handwritten": false,
+      "description": "Tol Pasteur",
+      "fingerprint": "557588d0b93ccec9",
+      "bbox": [
+        906,
+        741,
+        1204,
+        1050
+      ],
+      "fields": {
+        "gate": {
+          "value": "PASTEUR",
+          "confidence": 0.952,
+          "source": "ocr",
+          "raw": "30 [PASTEUR]",
+          "bbox": [
+            993,
+            759,
+            1046,
+            1011
+          ]
+        },
+        "paymentMethod": {
+          "value": "BCA Flazz",
+          "confidence": 0.889,
+          "source": "ocr",
+          "bbox": [
+            938,
+            746,
+            1013,
+            989
+          ]
+        },
+        "fare": {
+          "value": 75500,
+          "confidence": 0.84,
+          "source": "ocr_refined",
+          "raw": "-1 e-To11 BCA 75500",
+          "bbox": [
+            938,
+            746,
+            1013,
+            989
+          ]
+        },
+        "cardNumber": {
+          "value": "0145********6480",
+          "confidence": 0.984,
+          "source": "ocr",
+          "bbox": [
+            906,
+            741,
+            955,
+            1033
+          ]
+        },
+        "balanceAfter": {
+          "value": 59501,
+          "confidence": 0.984,
+          "source": "ocr",
+          "raw": "0145202201016480 Rp.59501",
+          "bbox": [
+            906,
+            741,
+            955,
+            1033
+          ]
+        },
+        "datePartial": {
+          "value": {
+            "day": null,
+            "month": 9,
+            "year": 2026
+          },
+          "confidence": 0.5,
+          "source": "ocr",
+          "raw": "09/2026",
+          "bbox": [
+            1060,
+            742,
+            1108,
+            924
+          ]
+        },
+        "transactionTime": {
+          "value": "08:50:22",
+          "confidence": 0.891,
+          "source": "ocr",
+          "bbox": [
+            1060,
+            742,
+            1108,
+            924
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "TOLL_FARE_PLAUSIBLE",
+          "status": "pass",
+          "message": "Toll fare is a multiple of Rp500 within 500..2,000,000",
+          "fields": [
+            "fare"
+          ]
+        }
+      ],
+      "reviewReasons": [
+        "Date partly unreadable ('09/2026')",
+        "fare (75500) was only legible after image clean-up (marker, hatching or handwriting over it) - confirm",
+        "Missing transactionDate"
+      ]
+    },
+    {
+      "id": "r15",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "parking",
+      "category": "parking",
+      "status": "verified",
+      "confidence": 0.966,
+      "amount": 33000,
+      "currency": "IDR",
+      "transactionDate": "2026-10-01",
+      "transactionAt": "2026-10-01T15:39:26",
+      "merchantName": "PK-LG-MANLESS",
+      "handwritten": false,
+      "description": "Parkir",
+      "fingerprint": "187d66fc020c922b",
+      "bbox": [
+        737,
+        1329,
+        1119,
+        1974
+      ],
+      "fields": {
+        "merchantName": {
+          "value": "PK-LG-MANLESS",
+          "confidence": 1.0,
+          "source": "ocr",
+          "bbox": [
+            1076,
+            1782,
+            1119,
+            1970
+          ]
+        },
+        "plateNumber": {
+          "value": "D 1099 SBE",
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "D1099SBE",
+          "bbox": [
+            1060,
+            1329,
+            1104,
+            1510
+          ]
+        },
+        "vehicleType": {
+          "value": "CAR",
+          "confidence": 0.7,
+          "source": "ocr"
+        },
+        "entryDate": {
+          "value": "2026-10-01",
+          "confidence": 0.95,
+          "source": "ocr",
+          "raw": "01 0ct 2026 08:10:45",
+          "bbox": [
+            1024,
+            1330,
+            1069,
+            1694
+          ]
+        },
+        "entryTime": {
+          "value": "08:10:45",
+          "confidence": 0.95,
+          "source": "ocr",
+          "bbox": [
+            1024,
+            1330,
+            1069,
+            1694
+          ]
+        },
+        "entryAt": {
+          "value": "2026-10-01T08:10:45",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            1024,
+            1330,
+            1069,
+            1694
+          ]
+        },
+        "exitDate": {
+          "value": "2026-10-01",
+          "confidence": 0.97,
+          "source": "ocr",
+          "raw": "01 0ct 2026 15:39:26",
+          "bbox": [
+            997,
+            1329,
+            1043,
+            1704
+          ]
+        },
+        "exitTime": {
+          "value": "15:39:26",
+          "confidence": 0.95,
+          "source": "ocr",
+          "bbox": [
+            997,
+            1329,
+            1043,
+            1704
+          ]
+        },
+        "exitAt": {
+          "value": "2026-10-01T15:39:26",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            997,
+            1329,
+            1043,
+            1704
+          ]
+        },
+        "durationMinutes": {
+          "value": 449,
+          "confidence": 0.97,
+          "source": "ocr",
+          "raw": "Odays 7hours 29min",
+          "bbox": [
+            958,
+            1330,
+            1015,
+            1973
+          ]
+        },
+        "fee": {
+          "value": 33000,
+          "confidence": 0.966,
+          "source": "ocr",
+          "raw": "33,000,00",
+          "bbox": [
+            933,
+            1330,
+            988,
+            1972
+          ]
+        },
+        "balanceAfter": {
+          "value": 18501,
+          "confidence": 0.999,
+          "source": "ocr",
+          "raw": "18.501",
+          "bbox": [
+            827,
+            1329,
+            884,
+            1974
+          ]
+        },
+        "cardNumber": {
+          "value": "0145********6480",
+          "confidence": 1.0,
+          "source": "ocr",
+          "bbox": [
+            879,
+            1330,
+            937,
+            1974
+          ]
+        },
+        "paymentMethod": {
+          "value": "BCA Flazz",
+          "confidence": 0.925,
+          "source": "ocr"
+        },
+        "transactionDate": {
+          "value": "2026-10-01",
+          "confidence": 0.97,
+          "source": "ocr",
+          "raw": "01 0ct 2026 15:39:26",
+          "bbox": [
+            997,
+            1329,
+            1043,
+            1704
+          ]
+        },
+        "transactionTime": {
+          "value": "15:39:26",
+          "confidence": 0.95,
+          "source": "ocr",
+          "bbox": [
+            997,
+            1329,
+            1043,
+            1704
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-10-01T15:39:26",
+          "confidence": 0.97,
+          "source": "ocr",
+          "bbox": [
+            997,
+            1329,
+            1043,
+            1704
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "EXIT_AFTER_ENTRY",
+          "status": "pass",
+          "message": "Exit time is after entry time",
+          "fields": [
+            "entryAt",
+            "exitAt"
+          ]
+        },
+        {
+          "code": "DURATION_MATCHES",
+          "status": "pass",
+          "message": "Printed duration 449 min vs exit-entry 449 min",
+          "fields": [
+            "durationMinutes",
+            "entryAt",
+            "exitAt"
+          ]
+        },
+        {
+          "code": "CARD_BALANCE_CHAIN",
+          "status": "skip",
+          "message": "Top-up between r12 and this receipt; link not verifiable",
+          "fields": [
+            "fee",
+            "balanceAfter"
+          ]
+        }
+      ],
+      "reviewReasons": []
+    },
+    {
+      "id": "r16",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "toll",
+      "category": "toll",
+      "status": "needs_review",
+      "confidence": 0.6,
+      "amount": 11000,
+      "currency": "IDR",
+      "transactionDate": "2026-10-02",
+      "transactionAt": "2026-10-02",
+      "handwritten": false,
+      "description": "Tol",
+      "fingerprint": "5bd64a66387cc652",
+      "bbox": [
+        496,
+        2047,
+        859,
+        2418
+      ],
+      "fields": {
+        "vehicleClass": {
+          "value": "Gol 1",
+          "confidence": 0.721,
+          "source": "ocr",
+          "bbox": [
+            533,
+            2047,
+            603,
+            2173
+          ]
+        },
+        "fare": {
+          "value": 11000,
+          "confidence": 0.695,
+          "source": "ocr_refined",
+          "raw": "GOL-1 e-T 3CARoi1000",
+          "bbox": [
+            533,
+            2047,
+            603,
+            2173
+          ]
+        },
+        "datePartial": {
+          "value": {
+            "day": 2,
+            "month": 10,
+            "year": null
+          },
+          "confidence": 0.5,
+          "source": "ocr",
+          "raw": "02/10/202",
+          "bbox": [
+            629,
+            2050,
+            670,
+            2167
+          ]
+        },
+        "serialNo": {
+          "value": "38 006364/00062",
+          "confidence": 0.869,
+          "source": "ocr",
+          "bbox": [
+            593,
+            2050,
+            634,
+            2403
+          ]
+        },
+        "transactionDate": {
+          "value": "2026-10-02",
+          "confidence": 0.6,
+          "source": "inferred",
+          "raw": "02/10/202",
+          "bbox": [
+            629,
+            2050,
+            670,
+            2167
+          ]
+        },
+        "transactionAt": {
+          "value": "2026-10-02",
+          "confidence": 0.6,
+          "source": "inferred"
+        }
+      },
+      "checks": [
+        {
+          "code": "TOLL_FARE_PLAUSIBLE",
+          "status": "pass",
+          "message": "Toll fare is a multiple of Rp500 within 500..2,000,000",
+          "fields": [
+            "fare"
+          ]
+        }
+      ],
+      "reviewReasons": [
+        "Date partly unreadable ('02/10/202')",
+        "Year of '02/10/202' inferred as 2026 from the other receipts",
+        "fare (11000) was only legible after image clean-up (marker, hatching or handwriting over it) - confirm",
+        "transactionDate is inferred (2026-10-02), not read directly - confirm"
+      ]
+    },
+    {
+      "id": "r17",
+      "source": {
+        "file": "page2.jpg",
+        "page": 1
+      },
+      "docType": "kwitansi",
+      "category": "pulsa",
+      "status": "needs_review",
+      "confidence": 0.0,
+      "amount": 600000,
+      "currency": "IDR",
+      "handwritten": true,
+      "description": "Pulsa (kwitansi)",
+      "bbox": [
+        76,
+        245,
+        656,
+        1416
+      ],
+      "fields": {
+        "receivedFrom": {
+          "value": "PT. Prambanan Kencana",
+          "confidence": 0.952,
+          "source": "ocr",
+          "raw": "PT. Prambanan Kencana",
+          "bbox": [
+            552,
+            275,
+            619,
+            1094
+          ]
+        },
+        "purpose": {
+          "value": "uang pulsn bulan dlefilex 2006",
+          "confidence": 0.848,
+          "source": "ocr",
+          "raw": "uang pulsn bulan dlefilex 2006",
+          "bbox": [
+            388,
+            263,
+            504,
+            1308
+          ]
+        },
+        "amountInWords": {
+          "value": "vau fiecehny wglel smpol",
+          "confidence": 0.056,
+          "source": "ocr",
+          "bbox": [
+            472,
+            271,
+            545,
+            1094
+          ]
+        },
+        "amount": {
+          "value": 600000,
+          "confidence": 0.84,
+          "source": "ocr_refined",
+          "raw": "600.000",
+          "bbox": [
+            167,
+            245,
+            213,
+            685
+          ]
+        }
+      },
+      "checks": [
+        {
+          "code": "AMOUNT_MATCHES_WORDS",
+          "status": "skip",
+          "message": "Jumlah or terbilang not readable",
+          "fields": [
+            "amount",
+            "amountInWords"
+          ]
+        }
+      ],
+      "reviewReasons": [
+        "Handwritten kwitansi - verify payer, purpose, amount and date against the image",
+        "amount (600000) was only legible after image clean-up (marker, hatching or handwriting over it) - confirm",
+        "Missing transactionDate"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "file": "page1.jpg",
+      "page": 1,
+      "width": 1720,
+      "height": 2576,
+      "rotation": 270,
+      "ocrLines": 252,
+      "receiptIds": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9"
+      ],
+      "elapsedMs": 4257
+    },
+    {
+      "file": "page2.jpg",
+      "page": 1,
+      "width": 1853,
+      "height": 2576,
+      "rotation": 270,
+      "ocrLines": 118,
+      "receiptIds": [
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17"
+      ],
+      "elapsedMs": 3429
+    }
+  ],
+  "batchChecks": [
+    {
+      "code": "STATION_SEQUENCE",
+      "status": "pass",
+      "message": "34.135.05: 2 receipts",
+      "fields": []
+    },
+    {
+      "code": "STATION_SEQUENCE",
+      "status": "pass",
+      "message": "34.137.03: 6 receipts",
+      "fields": []
+    },
+    {
+      "code": "CARD_BALANCE_CHAIN",
+      "status": "pass",
+      "message": "Card ****6480: 4 receipts, 2 balance links verified",
+      "fields": []
+    }
+  ],
+  "warnings": []
+}

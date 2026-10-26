@@ -1,0 +1,9 @@
+[project]
+name = "docscan"
+version = "1.0.0"
+description = "Receipt / document scan service: OCR + layout + arithmetic validation -> JSON"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = [".", "tests"]
+markers = ["slow: runs the real OCR models"]

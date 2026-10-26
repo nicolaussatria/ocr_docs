@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08347a">
+<title>DocScan — Receipt workspace</title>
+<style>
+:root{--bg:#f6f7fb;--panel:#fff;--ink:#25283d;--muted:#686d83;--line:#e8e9f1;--accent:#08347a;--accent-hover:#062a63;--tint:#eff4fc;--ok:#23765a;--ok-bg:#edf8f1;--warn:#94631a;--warn-bg:#fff7e8;--bad:#b33c4b;--bad-bg:#fff0f1;--radius:16px;--shadow:0 3px 16px #25283d04;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+
+*{box-sizing:border-box}
+ [hidden]{display:none!important}
+ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+ button,input,select,textarea{font:inherit}
+ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+ button{cursor:pointer}
+ button:disabled{cursor:not-allowed;opacity:.48}
+ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #9cbcef;outline-offset:4px}
+ button{transition:background .16s,box-shadow .16s}
+ a{color:var(--accent)}
+ .icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;vertical-align:middle}
+ .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 16px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font-weight:600;font-size:13px;text-decoration:none;white-space:nowrap}
+.btn:hover:not(:disabled){background:#f7f9fb;border-color:#d2dae6}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:white;box-shadow:0 3px 6px #08347a18}
+.btn.primary:hover:not(:disabled){background:var(--accent-hover)}
+.btn.quiet{background:transparent;border-color:transparent;color:var(--muted)}
+.btn.small{min-height:32px;padding:5px 10px;font-size:12px}
+.icon-btn{display:inline-flex;justify-content:center;align-items:center;width:34px;height:34px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--muted)}
+.icon-btn:hover{background:var(--tint);color:var(--accent)}
+
+.topbar{background:#fff;border-bottom:1px solid var(--line);height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 max(28px,calc((100vw - 1320px)/2));gap:20px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none}
+.brand-mark{display:grid;place-items:center;width:37px;height:39px;background:var(--accent);color:white;border-radius:11px}
+.brand-mark .icon{width:24px;height:24px}
+.brand b{font-size:22px;letter-spacing:-.7px}
+.brand-separator{height:22px;width:1px;background:var(--line);margin:0 10px}
+.brand-sub{font-size:13px;color:var(--muted)}
+.top-actions{display:flex;gap:8px;align-items:center}
+.workspace-tag{border:1px solid var(--line);border-radius:20px;padding:5px 12px;color:var(--muted);font-size:11px;margin-right:8px}
+.workspace-tag i{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-right:6px}
+
+main{max-width:1320px;margin:0 auto;padding:38px 28px 26px}
+.eyebrow{text-transform:uppercase;letter-spacing:1.7px;font-size:10px;font-weight:700;color:var(--accent);margin:0 0 8px}
+.intro{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:26px}
+h1{font-size:34px;letter-spacing:-1.2px;font-weight:650;line-height:1.2;margin:0 0 10px}
+p{margin:0}
+.subtitle{color:var(--muted);font-size:14px}
+.intro-note{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:10px}
+.intro-note .icon{color:var(--accent);width:17px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);padding:18px 22px;margin:0 0 24px;list-style:none;border:1px solid var(--line);background:white;border-radius:12px;gap:20px}
+.step{display:flex;align-items:center;gap:11px;color:#8a8da0;position:relative}
+.step:not(:last-child):after{content:"";width:32px;height:1px;background:var(--line);position:absolute;right:4px;top:50%}
+.step-number{width:29px;height:29px;border-radius:50%;background:#f3f4f8;color:#8a8da0;display:grid;place-items:center;font-weight:650;font-size:12px;flex-shrink:0}
+.step b{display:block;font-size:12px;font-weight:650}
+.step small{font-size:10px;display:block;color:var(--muted)}
+.step.active{color:var(--accent)}
+.step.active .step-number{background:var(--accent);color:#fff;box-shadow:0 0 0 4px var(--tint)}
+.step.complete{color:var(--ink)}
+.step.complete .step-number{background:var(--ok-bg);color:var(--ok)}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.upload-grid{margin-bottom:24px}
+.panel-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:23px 24px 18px}
+.panel-title{font-size:16px;font-weight:650;letter-spacing:-.25px;margin:0 0 3px}
+.panel-description{font-size:12px;color:var(--muted)}
+.section-index{font-size:11px;font-weight:650;color:#9b9caf;line-height:25px}
+.dropzone{margin:0 24px 20px;border:1.5px dashed #c5d4ec;border-radius:12px;background:#fbfdff;display:grid;grid-template-columns:92px minmax(0,1fr) auto;column-gap:24px;row-gap:12px;align-items:center;padding:24px;transition:background .2s,border-color .2s}
+.dropzone:hover{border-color:var(--accent);background:#f7faff}
+.upload-art{grid-column:1;grid-row:1 / 3;width:92px;height:79px;position:relative;display:grid;place-items:center}
+.art-halo{position:absolute;width:78px;height:64px;background:#e9f0fc;border-radius:25px;transform:rotate(-12deg)}
+.paper{position:relative;width:44px;height:57px;border:1px solid #c6d6ef;border-radius:7px;background:white;transform:rotate(-8deg);box-shadow:4px 5px 0 #d7e3f6}
+.paper .icon{width:30px;height:40px;margin:7px;color:#83a4d8}
+.upload-float{position:absolute;right:4px;bottom:4px;background:var(--accent);color:#fff;width:30px;height:30px;border:3px solid #fbfdff;border-radius:10px;display:grid;place-items:center}
+.upload-float .icon{width:17px;height:17px}
+.dropzone h2{font-size:16px;font-weight:600;margin:0 0 5px}
+.dropzone p{font-size:13px;color:var(--muted);max-width:560px;margin:0}
+.drop-copy{grid-column:2;grid-row:1}
+.dropzone > .btn{grid-column:3;grid-row:1 / 3}
+.formats{grid-column:2;grid-row:2;display:flex;gap:6px;align-items:center;color:#8c8da0;font-size:10px}
+.formats span{background:white;border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-weight:600;font-size:9px;letter-spacing:.4px}
+.upload-bottom{border-top:1px solid var(--line);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.upload-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.btn.danger-quiet{background:transparent;border-color:transparent;color:var(--muted)}
+.btn.danger-quiet:hover:not(:disabled){background:var(--bad-bg);border-color:transparent;color:var(--bad)}
+.queue-status{font-size:12px;font-weight:500}
+.queue-hint{font-size:11px;color:var(--muted);margin-top:2px}
+.queue{padding:0 24px;max-height:270px;overflow:auto}
+.queue-item{display:flex;gap:11px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.file-icon{width:34px;height:39px;background:var(--tint);border-radius:7px;display:grid;place-items:center;color:var(--accent);flex-shrink:0}
+.file-meta{min-width:0;flex:1}
+.file-name{font-weight:550;font-size:12px;overflow-wrap:anywhere}
+.file-meta small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.file-meta .error-text{color:var(--bad)}
+.file-state{font-size:10px;color:var(--muted);white-space:nowrap}
+.file-state.success{color:var(--ok)}
+.file-state.processing{color:var(--accent)}
+.spin{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}
+}
+.compact-upload .dropzone{padding:18px 20px;grid-template-columns:minmax(0,1fr) auto;gap:14px}
+.compact-upload .upload-art,.compact-upload .formats{display:none}
+.compact-upload .dropzone h2{font-size:14px}
+.compact-upload .dropzone p{margin:0}
+.compact-upload .drop-copy{grid-column:1}
+.compact-upload .dropzone .btn{grid-column:2;grid-row:1}
+
+
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:24px}
+.metric{background:white;border:1px solid var(--line);border-radius:12px;padding:18px 20px;position:relative}
+.metric-top{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:500;margin-bottom:12px}
+.metric-top .icon{width:17px;height:17px;color:#a3adbc}
+.metric-value{font-size:26px;line-height:1.2;letter-spacing:-.7px;font-weight:650;font-variant-numeric:tabular-nums}
+.metric-value small{font-size:16px;font-weight:500;color:var(--muted);letter-spacing:0;margin-right:4px}
+.metric-caption{font-size:10px;color:var(--muted);margin-top:7px}
+.metric.warning .metric-value,.metric.warning .metric-top .icon{color:var(--warn)}
+.metric.total{background:#f9fbff;border-color:#dce6f6}
+.metric.total .metric-top .icon{color:var(--accent)}
+
+.results{overflow:hidden;scroll-margin-top:20px}
+.results .panel-heading{align-items:center}
+.result-tools{padding:0 24px 17px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.filters{display:flex;gap:4px;background:#f4f6f8;padding:4px;border-radius:9px}
+.filter{border:0;background:transparent;color:var(--muted);padding:6px 11px;font-size:11px;border-radius:6px;white-space:nowrap}
+.filter.active{background:white;color:var(--ink);box-shadow:0 1px 4px #25283d0d;font-weight:600}
+.filter span{font-size:9px;margin-left:5px;background:#edf0f5;padding:1px 5px;border-radius:4px}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;max-width:230px;background:white}
+.search .icon{width:15px;height:15px;color:var(--muted)}
+.search input{border:0;outline:0;width:100%;font-size:11px;background:transparent;color:var(--ink)}
+.search:focus-within{outline:2px solid #bfd2f0}
+.empty-results{text-align:center;padding:38px 24px 42px;border-top:1px solid var(--line);background:linear-gradient(180deg,#fff,#fdfeff)}
+.empty-result-icon{width:44px;height:44px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;margin:0 auto 12px;background:#fafcfe;color:#9aa7bb}
+.empty-results h3{font-size:14px;font-weight:600;margin:0 0 6px}
+.empty-results p{font-size:12px;color:var(--muted);max-width:430px;margin:auto}
+.empty-filter{padding:32px!important;text-align:center;color:var(--muted);font-size:12px}
+.scroll{overflow-x:auto}
+.receipt-table{width:100%;border-collapse:collapse;min-width:1080px}
+.receipt-table th{background:#fafbfd;color:#898b9e;text-transform:uppercase;letter-spacing:.6px;font-size:9px;font-weight:650;text-align:left;padding:12px 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.receipt-table td{padding:14px 10px;border-bottom:1px solid #f0f2f6;vertical-align:top}
+.receipt-table th:first-child,.receipt-table td:first-child{padding-left:24px}
+.receipt-table th:last-child,.receipt-table td:last-child{padding-right:24px}
+.receipt-table .doc td{background:#f9fbfd;padding:12px 24px}
+.doc-head{display:flex;align-items:center;gap:10px;font-size:11px}
+.doc-head .icon{width:16px;color:#929eb2}
+.doc-head strong{font-weight:600;overflow-wrap:anywhere}
+.doc-head span{color:var(--muted);font-size:10px}
+.doc-head .doc-total{margin-left:auto;color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.row:hover{background:#fcfdff}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border-radius:5px;font-size:9px;font-weight:600;white-space:nowrap}
+.badge:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
+.verified,.reviewed{background:var(--ok-bg);color:var(--ok)}
+.needs_review{background:var(--warn-bg);color:var(--warn)}
+.reviewed{background:var(--tint);color:var(--accent)}
+.src{font-size:10px;color:var(--muted);line-height:1.6}
+.row .src{margin-top:5px;max-width:150px}
+.view-btn{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--accent);background:none;border:0;padding:6px 0}
+.view-btn .icon{width:13px;height:13px}
+.thumb{width:36px;height:44px;object-fit:cover;border-radius:5px;border:1px solid var(--line)}
+.preview-btn{border:0;padding:0;background:#f1f4f9;border-radius:6px;width:36px;height:44px;color:#909eb5;display:grid;place-items:center}
+.ed{border:1px solid transparent;border-radius:5px;background:transparent;color:var(--ink);padding:6px;font-size:12px;min-height:31px;width:100%;transition:border-color .15s}
+.ed:hover{border-color:var(--line);background:#fff}
+.ed:focus{outline:2px solid #bfd2f0;border-color:var(--accent);background:white}
+.ed.edited{background:#f2f7ff;border-color:#dceaff}
+.ed.date{width:128px}
+.ed.merchant{min-width:120px}
+.ed.note{min-width:155px}
+.ed.amt{width:106px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.ed.guess{background:var(--warn-bg);border-color:#e7c88f}
+.ed[type=number]{appearance:textfield}
+.ed::-webkit-inner-spin-button{appearance:none}
+.num{text-align:right!important}
+.review-label{display:flex;align-items:center;justify-content:center;padding:7px}
+.review-label input,input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+.scan-score{font-size:9px;color:var(--muted);margin-top:7px}
+.results-footer{padding:12px 24px;display:flex;gap:12px;justify-content:space-between;font-size:10px;color:var(--muted);background:#fcfdfe}
+.review-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.result-count{font-size:11px;color:var(--muted)}
+
+.export-panel{margin-top:22px;padding:23px 24px}
+.export-main{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.export-copy{display:flex;align-items:flex-start;gap:14px}
+.export-icon{width:38px;height:38px;border-radius:10px;background:var(--tint);color:var(--accent);display:grid;place-items:center;flex-shrink:0}
+.export-copy h2{font-size:14px;font-weight:650;margin:0 0 4px}
+.export-copy p{font-size:11px;color:var(--muted)}
+.export-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.claim-layout{border:0;border-top:1px solid var(--line);margin:20px 0 0;padding:18px 0 0;min-width:0}
+.claim-layout legend{float:left;width:100%;padding:0;margin-bottom:12px;font-size:13px;font-weight:600}
+.claim-layout legend b{font-weight:inherit;color:var(--accent)}
+.claim-layout .legend-sub{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:2px}
+.layout-options{clear:both;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.layout-option{display:flex;gap:12px;align-items:flex-start;padding:15px 16px;border:1px solid var(--line);border-radius:11px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s}
+.layout-option:hover{border-color:#c5d4ec}
+.layout-option:has(input:checked){border-color:var(--accent);background:var(--tint);box-shadow:inset 0 0 0 1px var(--accent)}
+.layout-option:has(input:focus-visible){outline:3px solid #9cbcef;outline-offset:2px}
+.layout-option input{width:17px;height:17px;margin:2px 0 0;accent-color:var(--accent);flex-shrink:0}
+.layout-option b{display:block;font-size:13px;font-weight:650;margin-bottom:4px}
+.layout-option small{display:block;font-size:11px;line-height:1.6;color:var(--muted)}
+.layout-option em{display:block;margin-top:9px;font-style:normal;font-size:11px;font-weight:600;color:var(--accent);overflow-wrap:anywhere}
+.export-alert{color:var(--warn)!important;margin-top:5px}
+.page-footer{display:flex;justify-content:space-between;padding:23px 2px 0;gap:16px;font-size:10px;color:#9698a9}
+.page-footer span:first-child{display:flex;gap:6px;align-items:center}
+.page-footer .icon{width:13px;height:13px}
+.build{font-family:var(--mono);font-size:9px}
+.drop-overlay{position:fixed;inset:12px;z-index:100;display:none;place-items:center;background:#f2f7fff2;border:2px dashed var(--accent);border-radius:18px;color:var(--accent);pointer-events:none}
+.drop-overlay div{text-align:center;font-size:22px;font-weight:600}
+.drop-overlay .icon{width:42px;height:42px;display:block;margin:0 auto 15px}
+body.drag .drop-overlay{display:grid}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:min(90vw,580px);padding:12px 20px;background:#303947;color:white;border-radius:10px;z-index:200;box-shadow:0 6px 24px #25283d26;font-size:12px}
+.stale{padding:12px 24px;background:var(--warn-bg);color:var(--warn);text-align:center;font-size:12px}
+.stale button{margin-left:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+dialog{border:1px solid var(--line);border-radius:18px;background:white;color:var(--ink);padding:0;width:min(1040px,calc(100vw - 32px));max-height:92vh;box-shadow:0 20px 100px #2029372b}
+dialog::backdrop{background:#25283d70;backdrop-filter:blur(4px)}
+.modal-heading{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--line);gap:12px}
+.modal-heading h2{font-size:16px;margin:0;font-weight:650}
+.modal-heading p{font-size:11px;color:var(--muted);margin-top:3px}
+.dlg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0}
+.image-pane{padding:24px;background:#f4f6f8;min-width:0}
+.image-caption{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);margin-bottom:12px}
+.image-stage{height:480px;overflow:auto;display:flex;align-items:flex-start;justify-content:center;border:1px solid var(--line);border-radius:10px;background:#eaecf0;padding:12px}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 2px 8px #25283d12;cursor:zoom-in}
+.image-stage.zoomed{display:block}
+.image-stage.zoomed img{max-width:none;max-height:none;cursor:zoom-out}
+.image-placeholder{align-self:center;text-align:center;color:var(--muted);font-size:12px}
+.image-placeholder .icon{display:block;margin:0 auto 12px;width:35px;height:35px}
+.detail-info{padding:24px;min-width:0}
+.detail-status{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}
+.review-notice{font-size:11px;background:var(--warn-bg);padding:12px 14px;border-radius:9px;color:var(--warn);margin-bottom:18px;overflow-wrap:anywhere}
+.review-notice b{display:block;margin-bottom:5px}
+.review-notice ul{margin:0;padding-left:15px}
+.detail-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.detail-form label{font-size:11px;color:var(--muted);display:block}
+.detail-form .wide{grid-column:1/-1}
+.detail-form .ed{display:block;width:100%;font-size:13px;border:1px solid var(--line);padding:9px 10px;background:#fff;margin-top:5px}
+.detail-form textarea{resize:vertical;min-height:70px}
+.detail-form .ed.edited{background:#f6f9ff;border-color:#cfddf3}
+.detail-form .amt{text-align:left}
+.technical{margin-top:20px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;color:var(--muted)}
+.technical summary{cursor:pointer;font-weight:550}
+.technical table{width:100%;border-collapse:collapse;margin-top:12px;font-size:10px;table-layout:fixed}
+.technical th,.technical td{text-align:left;padding:7px 4px;border-bottom:1px solid var(--line);overflow-wrap:anywhere;vertical-align:top}
+.technical th{font-size:9px}
+.technical ul{padding-left:16px;overflow-wrap:anywhere}
+.technical pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:10px;max-height:200px;overflow:auto}
+.pass{color:var(--ok)}
+.fail{color:var(--bad)}
+.warn{color:var(--warn)}
+.modal-footer{border-top:1px solid var(--line);padding:16px 24px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.modal-nav{display:flex;gap:8px;align-items:center}
+.modal-nav span{color:var(--muted);font-size:11px}
+.settings-dialog{max-width:440px}
+.settings-body{padding:24px}
+.settings-body label{font-size:12px;font-weight:600;display:block;margin-bottom:8px}
+.settings-body input{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px;color:var(--ink);outline-color:var(--accent)}
+.settings-body p{font-size:12px;color:var(--muted);margin-top:12px}
+.settings-body .settings-help{font-size:10px;margin-top:12px;color:#9796a8}
+
+@media(min-width:1500px){main{padding-top:44px}
+.dropzone{padding-top:30px;padding-bottom:30px}
+}
+
+@media(max-width:1000px){.intro-note{display:none}
+.step:not(:last-child):after{display:none}
+.step small{display:none}
+.result-tools{flex-wrap:wrap}
+.cards{gap:10px}
+.metric{padding:16px}
+.metric-value{font-size:23px}
+.export-main{align-items:flex-start}
+.export-actions{max-width:190px}
+}
+
+@media(max-width:740px){.topbar{height:65px;padding:0 18px}
+.brand-sub,.brand-separator,.workspace-tag{display:none}
+.top-actions .btn{padding:8px}
+.brand b{font-size:20px}
+.brand-mark{width:31px;height:34px;border-radius:9px}
+main{padding:26px 16px 20px}
+h1{font-size:28px}
+.intro{margin-bottom:20px}
+.subtitle{font-size:12px}
+.steps{padding:15px 12px;gap:8px;margin-bottom:18px}
+.step{flex-direction:column;gap:8px;align-items:center;text-align:center}
+.step b{font-size:10px}
+.step-number{width:26px;height:26px}
+.upload-grid{margin-bottom:18px}
+.panel-heading{padding:20px 18px 16px}
+.dropzone{margin:0 18px 18px;padding:20px 16px;grid-template-columns:60px minmax(0,1fr);column-gap:14px;row-gap:18px}
+.upload-art{grid-row:1;width:60px;height:64px}
+.art-halo{width:58px;height:54px}
+.upload-float{right:-3px;bottom:-1px}
+.dropzone h2{font-size:14px}
+.dropzone p{font-size:12px}
+.dropzone > .btn{grid-column:1 / -1;grid-row:2}
+.formats{grid-column:1 / -1;grid-row:3;justify-content:center}
+.upload-bottom{padding:15px 18px;flex-direction:column;align-items:stretch}
+.upload-bottom .btn{width:100%}
+.upload-actions{flex-direction:column-reverse;align-items:stretch}
+.queue{padding:0 18px}
+.queue-status{font-size:11px}
+.queue-hint{font-size:10px;max-width:none}
+.file-state{display:none}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:18px;gap:10px}
+.metric{padding:15px}
+.metric-top{font-size:10px;margin-bottom:9px}
+.metric-value{font-size:24px}
+.metric-caption{font-size:9px}
+.result-tools{padding:0 16px 14px;gap:12px}
+.filters{width:100%;justify-content:space-between}
+.filter{padding:6px 9px;flex:1}
+.search{max-width:none;width:100%}
+.result-count{display:none}
+.results-footer{padding:12px 18px;font-size:9px;flex-wrap:wrap}
+.export-panel{padding:20px 18px;display:flex;flex-direction:column}
+.export-main{display:contents}
+.export-copy{order:1}
+.claim-layout{order:2}
+.export-actions{order:3;margin-top:18px}
+.layout-options{grid-template-columns:1fr}
+.export-actions{max-width:none;justify-content:flex-start}
+.export-actions .primary{flex:1}
+.page-footer{font-size:9px;align-items:flex-start}
+.page-footer span:first-child{max-width:240px}
+.dlg{grid-template-columns:1fr}
+.image-stage{height:260px}
+.image-pane{padding:18px}
+.detail-info{padding:20px}
+.modal-heading{padding:16px 18px}
+.modal-footer{padding:14px 18px;position:sticky;bottom:0;background:white;flex-wrap:wrap}
+.modal-footer .primary{font-size:12px}
+.modal-nav{gap:3px}
+.modal-nav .btn{padding:6px 8px}
+.compact-upload .dropzone{padding:16px;grid-template-columns:1fr}
+.compact-upload .dropzone p{font-size:12px}
+.compact-upload .dropzone .btn{grid-column:1;grid-row:2;font-size:12px;padding:9px 12px}
+.intro .eyebrow{font-size:9px}
+.receipt-table{min-width:1000px}
+}
+
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 7h6M9 11h6M9 15h3"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></symbol>
+<symbol id="i-scan" viewBox="0 0 24 24"><path d="M8 3H4v5m12-5h4v5M4 16v5h4m12-5v5h-4M3 12h18M8 7h8m-8 10h8"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Zm0 0v6h5M8 13h8m-8 4h5"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3" fill="white"/><circle cx="15" cy="17" r="3" fill="white"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Zm0 6v5m0 3h.01"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h7l2 3h9v12H3V6Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 6a8 8 0 0 1 13 4M5 14a8 8 0 0 0 13 4"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><path d="M20 8H4V5l14-2v5M4 8v13h17V8M21 12h-6v5h6m-3-2.5h.01"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="m7 7-5 5 5 5m10-10 5 5-5 5m-4-13-2 20"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+</defs></svg>
+<!-- <header class="topbar">
+  <a class="brand" href="#" aria-label="DocScan home"><span class="brand-mark"><svg class="icon"><use href="#i-receipt"/></svg></span><b>DocScan</b><span class="brand-separator"></span><span class="brand-sub">Receipt workspace</span></a>
+  <div class="top-actions"><span class="workspace-tag"><i></i>Your workspace</span><button class="icon-btn" id="settings" aria-label="Connection settings" title="Connection settings"><svg class="icon"><use href="#i-settings"/></svg></button></div>
+</header> -->
+<div id="stale" class="stale" hidden role="status">A new version of DocScan is available. Export your work before reloading.<button class="btn small" id="reload">Reload page</button></div>
+<main>
+  <!-- <div class="intro"><div><p class="eyebrow">Less paperwork. More clarity.</p><h1>Your receipts. All in order.</h1><p class="subtitle">Scan your documents, check the details, and create your expense claim.</p></div><div class="intro-note"><svg class="icon"><use href="#i-receipt"/></svg>One receipt or a whole page. We’ll sort it out.</div></div> -->
+  <ol class="steps" aria-label="Your progress">
+    <li class="step active" id="step1" aria-current="step"><span class="step-number">1</span><div><b>Add documents</b><small>Photos or PDFs</small></div></li>
+    <li class="step" id="step2"><span class="step-number">2</span><div><b>Scan receipts</b><small>Extract the details</small></div></li>
+    <li class="step" id="step3"><span class="step-number">3</span><div><b>Review & correct</b><small>Make sure it’s right</small></div></li>
+    <li class="step" id="step4"><span class="step-number">4</span><div><b>Export your claim</b><small>Ready for your spreadsheet</small></div></li>
+  </ol>
+  <div class="upload-grid">
+    <section class="panel upload-panel" id="uploadPanel" aria-labelledby="uploadTitle">
+      <div class="panel-heading"><div><h2 class="panel-title" id="uploadTitle">Add your documents</h2><p class="panel-description">Start with a receipt photo or a scanned document.</p></div><span class="section-index">01</span></div>
+      <input id="files" type="file" multiple accept="image/jpeg,image/png,image/webp,application/pdf" hidden>
+      <div class="dropzone" id="dropzone">
+        <div class="upload-art" aria-hidden="true"><div class="art-halo"></div><div class="paper"><svg class="icon"><use href="#i-receipt"/></svg></div><span class="upload-float"><svg class="icon"><use href="#i-plus"/></svg></span></div>
+        <div class="drop-copy"><h2>Drop your receipts here</h2><p>Add photos or PDFs. We’ll separate the receipts and extract the details.</p></div>
+        <button class="btn primary" id="add"><svg class="icon"><use href="#i-upload"/></svg>Choose documents</button>
+        <div class="formats" aria-label="Supported formats"><span>JPG</span><span>PNG</span><span>WEBP</span><span>PDF</span><b style="font-weight:400;margin-left:5px">or drag and drop</b></div>
+      </div>
+      <div class="queue" id="queue" aria-label="Your documents"></div>
+      <div class="upload-bottom"><div><div class="queue-status" id="queueStatus">No documents added yet</div><div class="queue-hint" id="queueHint">Choose a file to get started.</div></div><div class="upload-actions"><button class="btn danger-quiet" id="clearAll" hidden><svg class="icon"><use href="#i-trash"/></svg>Remove all</button><button class="btn primary" id="go" disabled><svg class="icon"><use href="#i-scan"/></svg>Scan documents<svg class="icon" style="width:15px"><use href="#i-arrow"/></svg></button></div></div>
+      <span id="msg" class="sr-only" role="status" aria-live="polite"></span>
+    </section>
+  </div>
+  <section class="cards" id="cards" aria-label="Scan summary"></section>
+  <section class="panel results" id="results" aria-labelledby="resultsTitle">
+    <div class="panel-heading"><div><h2 class="panel-title" id="resultsTitle">Review your receipts</h2><p class="panel-description" id="resultsHint">Your extracted details will appear here after scanning.</p></div><div class="review-actions"><span class="result-count" id="resultCount">No receipts yet</span><button class="btn small" id="reviewNext" hidden><svg class="icon"><use href="#i-eye"/></svg>Review next</button></div></div>
+    <div class="result-tools" id="resultTools" hidden><div class="filters" role="group" aria-label="Filter receipts"><button class="filter active" data-filter="all" aria-pressed="true">All receipts <span id="countAll">0</span></button><button class="filter" data-filter="attention" aria-pressed="false">To review <span id="countReview">0</span></button><button class="filter" data-filter="reviewed" aria-pressed="false">Reviewed <span id="countReviewed">0</span></button></div><label class="search"><svg class="icon"><use href="#i-search"/></svg><input type="search" id="search" aria-label="Search receipts" placeholder="Search merchant, date, notes…"></label></div>
+    <div class="empty-results" id="emptyResults"><div class="empty-result-icon"><svg class="icon"><use href="#i-receipt"/></svg></div><h3>A clearer picture of every expense</h3><p>Once you scan, you can review each receipt, correct the details, and see your claim total in one place.</p></div>
+    <div class="scroll" id="receiptScroll" hidden tabindex="0" role="region" aria-label="Receipts table, scroll horizontally to see all fields"><table class="receipt-table"><caption class="sr-only">Extracted receipts. Edit fields directly or open a receipt to compare with its image.</caption><thead><tr><th aria-label="Original receipt"></th><th>Status</th><th>Category</th><th>Date</th><th>Merchant</th><th>Keterangan / Notes</th><th class="num">Amount (Rp)</th><th>Reviewed</th></tr></thead><tbody id="rows"></tbody></table></div>
+    <div class="results-footer"><span id="resultsFootnote">Your original scan is kept alongside your corrections.</span><span id="period">Amounts in Indonesian rupiah (IDR)</span></div>
+  </section>
+  <section class="panel export-panel" aria-labelledby="exportTitle"><div class="export-main"><div class="export-copy"><span class="export-icon"><svg class="icon"><use href="#i-download"/></svg></span><div><h2 id="exportTitle">Your claim, ready to go</h2><p id="exportHint">Scan your documents to create a spreadsheet-ready claim.</p><p id="exportWarning" class="export-alert" hidden></p></div></div><div class="export-actions"><button class="btn quiet" id="json" disabled title="Download original scan data and your edits"><svg class="icon" style="width:16px"><use href="#i-code"/></svg>JSON data</button><button class="btn quiet" id="csv" disabled title="Plain text table, for systems that import CSV"><svg class="icon" style="width:16px"><use href="#i-file"/></svg>CSV</button><button class="btn primary" id="xlsx" disabled><svg class="icon"><use href="#i-download"/></svg>Export Excel</button></div></div><fieldset class="claim-layout" id="oneWrap" hidden><legend>How should your <b id="layoutDocs">documents</b> go into the claim?<span class="legend-sub">The claim form has one table per claim. Pick what your files are.</span></legend><div class="layout-options"><label class="layout-option"><input type="radio" name="claimLayout" id="perDoc" checked><span><b>One claim per document</b><small>Each file gets its own table, under the file's name, with its own total. Choose this when every file is a separate claim.</small><em id="perDocPreview"></em></span></label><label class="layout-option"><input type="radio" name="claimLayout" id="one"><span><b>Combine into one claim</b><small>All receipts from all files in one table, sorted by date, with one total. Choose this when the files are pages or photos of the same claim.</small><em id="onePreview"></em></span></label></div></fieldset></section>
+  <footer class="page-footer"><span><svg class="icon"><use href="#i-clock"/></svg>This workspace lives in this tab. Export before leaving.</span><span>DocScan <span class="build">· __UI_BUILD__</span></span></footer>
+</main>
+<div class="drop-overlay" aria-hidden="true"><div><svg class="icon"><use href="#i-upload"/></svg>Drop to add your documents</div></div>
+<div id="toast" class="toast" role="status" hidden></div>
+<dialog id="dlg" aria-labelledby="detailTitle"><div class="modal-heading"><div><h2 id="detailTitle">Review receipt</h2><p id="detailSource"></p></div><button class="icon-btn" id="closeDetail" aria-label="Close receipt"><svg class="icon"><use href="#i-x"/></svg></button></div><div class="dlg"><div class="image-pane"><div class="image-caption"><span>Original receipt</span><button class="btn small quiet" id="zoomImage">Zoom image</button></div><div id="dImg" class="image-stage"></div><p class="src" style="margin-top:10px">Compare the printed details with the fields on the right.</p></div><div class="detail-info" id="dInfo"></div></div><div class="modal-footer"><div class="modal-nav"><button class="btn small quiet" id="previousReceipt" aria-label="Previous receipt"><svg class="icon" style="transform:rotate(180deg)"><use href="#i-chevron"/></svg></button><span id="detailPosition"></span><button class="btn small quiet" id="nextReceipt" aria-label="Next receipt"><svg class="icon"><use href="#i-chevron"/></svg></button></div><button class="btn primary" id="markReviewed"><svg class="icon"><use href="#i-check"/></svg>Mark as reviewed</button></div></dialog>
+<dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle"><div class="modal-heading"><h2 id="settingsTitle">Connection settings</h2><button class="icon-btn" id="closeSettings" aria-label="Close settings"><svg class="icon"><use href="#i-x"/></svg></button></div><div class="settings-body"><label for="key">API key <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="key" type="password" autocomplete="off" placeholder="Enter your service API key"><p>Only needed if your scanning service requires a key. Your administrator can provide it.</p><p class="settings-help">The key is saved in this browser. Documents are sent to the scanning service when you select Scan.</p></div><div class="modal-footer"><button class="btn primary" id="saveSettings">Save settings</button></div></dialog>
+<script>
+
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => n == null ? "" : Number(n).toLocaleString("id-ID");
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const icon = (name, cls = "") => `<svg class="icon ${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+const plural = (n, noun) => `${n} ${noun}${n === 1 ? "" : "s"}`;
+const docs = [];
+const edits = {};
+let seq = 0, busy = false, filter = "all", currentReceipt = null, toastTimer;
+try { $("key").value = localStorage.getItem("docscan.key") || ""; } catch (e) {}
+function notify(message) {
+  clearTimeout(toastTimer); $("toast").textContent = message; $("toast").hidden = false;
+  toastTimer = setTimeout(() => { $("toast").hidden = true; }, 5500);
+}
+function addFiles(files) {
+  let added = 0, duplicate = 0, rejected = 0;
+  for (const f of files) {
+    if (!f.size || !(/^(image\/(jpeg|png|webp)|application\/pdf)$/i.test(f.type) || /\.(jpe?g|png|webp|pdf)$/i.test(f.name))) { rejected++; continue; }
+    if (docs.some(d => d.file.name === f.name && d.file.size === f.size && d.file.lastModified === f.lastModified)) { duplicate++; continue; }
+    docs.push({ key: "d" + (++seq), file: f, state: "queued" }); added++;
+  }
+  render();
+  if (rejected) notify(`${plural(rejected, "file")} could not be added. Choose a non-empty JPG, PNG, WebP, or PDF.`);
+  else if (duplicate) notify(`${plural(duplicate, "file")} already in your workspace.${added ? ` ${plural(added, "document")} added.` : ""}`);
+  else if (added) notify(`${plural(added, "document")} added.${busy ? " Added to the scan queue." : " Select Scan documents to continue."}`);
+}
+const BUILD = "__UI_BUILD__";
+async function checkStale() {
+  if (BUILD.startsWith("__")) return false;
+  try {
+    const now = (await (await fetch("/healthz", { cache: "no-store" })).json()).ui;
+    if (!now || now === BUILD) return false;
+  } catch (e) { return false; }
+  if (!docs.length) { location.reload(); return true; }
+  $("stale").hidden = false;
+  return true;
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) checkStale(); });
+$("reload").onclick = () => location.reload();
+$("add").onclick = () => $("files").click();
+$("files").onchange = () => { addFiles($("files").files); $("files").value = ""; };
+let dragDepth = 0;
+addEventListener("dragenter", e => { if (Array.from(e.dataTransfer?.types || []).includes("Files")) { e.preventDefault(); dragDepth++; document.body.classList.add("drag"); } });
+addEventListener("dragover", e => { if (Array.from(e.dataTransfer?.types || []).includes("Files")) e.preventDefault(); });
+addEventListener("dragleave", () => { if (--dragDepth <= 0) { dragDepth = 0; document.body.classList.remove("drag"); } });
+addEventListener("drop", e => { e.preventDefault(); dragDepth = 0; document.body.classList.remove("drag"); addFiles(e.dataTransfer?.files || []); });
+addEventListener("beforeunload", e => { if (docs.length) { e.preventDefault(); e.returnValue = ""; } });
+if ($("settings")) $("settings").onclick = () => $("settingsDialog").showModal();   // the top bar may be hidden
+$("closeSettings").onclick = () => $("settingsDialog").close();
+$("saveSettings").onclick = () => {
+  try { localStorage.setItem("docscan.key", $("key").value.trim()); } catch (e) {}
+  $("settingsDialog").close(); notify("Connection settings saved.");
+};
+$("go").onclick = async () => {
+  if (busy || !docs.some(d => d.state === "queued")) return;
+  busy = true; render();
+  const key = $("key").value.trim();
+  try { localStorage.setItem("docscan.key", key); } catch (e) {}
+  await checkStale();
+  for (let d; (d = docs.find(x => x.state === "queued"));) {
+    d.state = "scanning"; render();
+    const fd = new FormData(); fd.append("files", d.file);
+    try {
+      const response = await fetch("/v1/scan?includeImages=true&includeRawText=true", { method: "POST", body: fd, headers: key ? { "X-API-Key": key } : {} });
+      const body = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        if (response.status === 401) throw new Error("An API key is required or incorrect. Update Connection settings, then retry.");
+        throw new Error(typeof body.detail === "string" ? body.detail : "The service could not scan this file. Please retry.");
+      }
+      if (!Array.isArray(body.receipts)) throw new Error("The scan service returned an unexpected response. Please retry.");
+      body.receipts.forEach(x => { x.uid = d.key + "/" + x.id; });
+      d.result = body; d.state = "done";
+      // A newly uploaded duplicate changes the evidence behind a previous review.
+      for (const uid of Object.keys(duplicates())) if (edits[uid]?.reviewed) edits[uid].reviewed = false;
+    } catch (e) { d.state = "error"; d.error = e.message === "Failed to fetch" ? "Could not reach the scan service. Check your connection and retry." : e.message; }
+  }
+  busy = false; render();
+  const all = done().flatMap(d => d.result.receipts);
+  if (all.length) { notify(`${plural(all.length, "receipt")} ready. Review the details before exporting.`); $("results").scrollIntoView({ behavior: "smooth", block: "start" }); }
+  else notify("No receipts to review yet. Check the document messages above.");
+};
+const done = () => docs.filter(d => d.state === "done");
+function amountOf(r) {
+  const e = edits[r.uid];
+  return e && "amount" in e ? e.amount : r.claimedAmount ?? r.amount ?? r.suggestedAmount ?? null;
+}
+
+const TYPES = [
+  ["fuel", "BBM", "bbm"], ["toll", "Tol", "tol"], ["parking", "Parkir", "parkir"], ["pulsa", "Pulsa", "pulsa"],
+  ["vehicle_service", "Servis kendaraan", "servis"],
+  ["internet", "Internet", "lain"], ["utilities", "Listrik/air", "lain"], ["lodging", "Hotel", "lain"],
+  ["transport", "Transport", "lain"], ["meal", "Makan/minum", "lain"], ["office", "ATK", "lain"],
+  ["other", "Lain-lain", "lain"], ["medical", "Medical", "medical"],
+].map(([value, label, col]) => ({ value, label, col }));
+const TYPE = Object.fromEntries(TYPES.map(t => [t.value, t]));
+const typeSelect = (uid, now, edited) => `<select class="ed${edited ? " edited" : ""}" data-f="type" data-id="${esc(uid)}" aria-label="Expense category">
+  <optgroup label="Expense categories">${TYPES.filter(t => t.col !== "lain" && t.col !== "medical").map(t => `<option value="${t.value}"${t.value === now ? " selected" : ""}>${t.label}</option>`).join("")}</optgroup>
+  <optgroup label="Other expenses (Lain-lain)">${TYPES.filter(t => t.col === "lain").map(t => `<option value="${t.value}"${t.value === now ? " selected" : ""}>${t.label}</option>`).join("")}</optgroup>
+  <optgroup label="Separate claim">${TYPES.filter(t => t.col === "medical").map(t => `<option value="${t.value}"${t.value === now ? " selected" : ""}>${t.label} (Claim Medical)</option>`).join("")}</optgroup></select>`;
+
+// What the scanner read, before any edit. A paper nobody could classify may still say what it is
+// for; a 'service charge' is not a car service.
+function typeRead(r) {
+  if (r.docType === "unknown" && /puls/i.test((r.rawText || []).join(" "))) return "pulsa";
+  return TYPE[r.category] ? r.category : "other";
+}
+const dateRead = (r) => r.transactionDate || "";
+const merchantRead = (r) => (r.merchantName || r.fields?.gate?.value || "").replace(/\s+/g, " ").trim();
+// ... and what goes on the claim form: your edit where you made one.
+const edited = (r, f) => !!edits[r.uid] && f in edits[r.uid];
+const typeOf = (r) => edited(r, "type") ? edits[r.uid].type : typeRead(r);
+const dateOf = (r) => edited(r, "date") ? edits[r.uid].date : dateRead(r);
+const merchantOf = (r) => edited(r, "merchant") ? edits[r.uid].merchant : merchantRead(r);
+// Claim Medical Karyawan: the patient on the receipt and what was paid for; 90 % of the receipt is claimed
+const patientRead = (r) => r.fields?.patientName?.value || "";
+const serviceRead = (r) => r.fields?.serviceDescription?.value || r.fields?.purpose?.value || "";
+const patientOf = (r) => edited(r, "patient") ? edits[r.uid].patient : patientRead(r);
+const serviceOf = (r) => edited(r, "service") ? edits[r.uid].service : serviceRead(r);
+const isMedical = (r) => typeOf(r) === "medical";
+const medicalClaim = (amount) => Math.floor(((amount || 0) * 9 + 5) / 10);
+const claimValue = (r) => isMedical(r) ? medicalClaim(amountOf(r)) : amountOf(r) || 0;
+// A date read from handwriting, or with its year filled in from the other receipts, is a starting point.
+const dateUnsure = (r) => !edited(r, "date") && (r.fields?.transactionDate?.confidence ?? 1) < 0.85;
+
+// The remark that goes into the claim form's Keterangan column: what the scanner says the receipt
+// is, until you type something better. A corrected merchant or type is carried into it, as long as
+// you have not written the remark yourself.
+function noteOf(r) {
+  if (edited(r, "note")) return edits[r.uid].note;
+  let note = r.description || "";
+  if (edited(r, "merchant")) {
+    const was = merchantRead(r), now = edits[r.uid].merchant;
+    const at = was ? note.toLowerCase().indexOf(was.toLowerCase()) : -1;
+    note = at >= 0 ? note.slice(0, at) + now + note.slice(at + was.length) : now ? (note ? `${note} - ${now}` : now) : note;
+  }
+  if (typeOf(r) !== typeRead(r) && typeOf(r) !== "other") {   // 'Lain-lain' is a column, not a better description
+    const was = TYPE[typeRead(r)].label, now = TYPE[typeOf(r)].label;
+    note = was !== "Lain-lain" && note.startsWith(was) ? now + note.slice(was.length) : note ? `${now} - ${note}` : now;
+  }
+  return note.replace(/\s+/g, " ").replace(/^[\s:;,-]+|[\s:;,-]+$/g, "");
+}
+function amountNote(r) {
+  if (edits[r.uid] && "amount" in edits[r.uid]) return "edited";
+  if (r.claimedAmount) return `handwritten claim${r.amount ? " · printed " + fmt(r.amount) : ""}`;
+  return r.amount == null && r.suggestedAmount != null ? "best guess – confirm" : "";
+}
+// The server flags a receipt that occurs twice inside one document; across documents it is our job.
+function duplicates() {
+  const first = new Map(), out = {};
+  for (const d of done()) for (const r of d.result.receipts) {
+    if (!r.fingerprint) continue;
+    const [d0, r0] = first.get(r.fingerprint) || [];
+    if (!d0) first.set(r.fingerprint, [d, r]);
+    else if (d0 !== d) { out[r.uid] = `Same receipt as ${r0.id} in ${d0.file.name}`; out[r0.uid] = `Same receipt as ${r.id} in ${d.file.name}`; }
+  }
+  return out;
+}
+
+const receiptOf = (uid) => done().flatMap(d => d.result.receipts).find(x => x.uid === uid);
+const hasCorrections = (r) => Object.keys(edits[r.uid] || {}).some(k => k !== "reviewed");
+const needsAttention = (r, dup = duplicates()) => !edits[r.uid]?.reviewed && (r.status === "needs_review" || r.uid in dup || hasCorrections(r));
+function badge(r, dup) {
+  const reviewed = !!edits[r.uid]?.reviewed;
+  return `<span class="badge ${reviewed ? "reviewed" : needsAttention(r, dup) ? "needs_review" : "verified"}">${reviewed ? "Reviewed by you" : needsAttention(r, dup) ? "Check needed" : "Scan checked"}</span>`;
+}
+function matchesReceipt(r, dup) {
+  if (filter === "attention" && !needsAttention(r, dup)) return false;
+  if (filter === "reviewed" && !edits[r.uid]?.reviewed) return false;
+  const query = $("search").value.trim().toLowerCase();
+  return !query || [merchantOf(r), noteOf(r), dateOf(r), TYPE[typeOf(r)].label, r.source?.file, amountOf(r)].join(" ").toLowerCase().includes(query);
+}
+function fieldInput(r, f, cls, type, value, label) {
+  return `<input class="ed ${cls}${edited(r, f) ? " edited" : ""}" type="${type}" data-f="${f}" data-id="${esc(r.uid)}" value="${esc(value)}" aria-label="${esc(label)}"${type === "number" ? ' min="0" step="1"' : ""}>`;
+}
+function render() {
+  const dup = duplicates(), ds = done(), all = ds.flatMap(d => d.result.receipts);
+  const queued = docs.filter(d => d.state === "queued").length;
+  const active = docs.find(d => d.state === "scanning");
+  const errors = docs.filter(d => d.state === "error").length;
+  const attention = all.filter(r => needsAttention(r, dup)).length;
+  const reviewed = all.filter(r => edits[r.uid]?.reviewed).length;
+  const total = all.reduce((a, r) => a + claimValue(r), 0);
+  const dates = all.map(dateOf).filter(Boolean).sort();
+  const stage = busy || queued ? 2 : !docs.length ? 1 : !all.length ? 2 : attention ? 3 : 4;
+  for (let i = 1; i <= 4; i++) {
+    const el = $("step" + i); el.className = "step" + (i === stage ? " active" : i < stage ? " complete" : "");
+    if (i === stage) el.setAttribute("aria-current", "step"); else el.removeAttribute("aria-current");
+    el.querySelector(".step-number").innerHTML = i < stage ? icon("check") : i;
+  }
+  $("uploadPanel").classList.toggle("compact-upload", !!docs.length);
+  $("add").innerHTML = icon(docs.length ? "plus" : "upload") + (docs.length ? "Add more documents" : "Choose documents");
+  $("queue").innerHTML = docs.map(d => {
+    const n = d.result?.receipts.length || 0;
+    return `<div class="queue-item"><span class="file-icon">${icon(d.file.type === "application/pdf" ? "file" : "receipt")}</span><div class="file-meta"><div class="file-name">${esc(d.file.name)}</div><small class="${d.state === "error" ? "error-text" : ""}">${d.state === "error" ? esc(d.error) : `${Math.max(.01, d.file.size / 1048576).toFixed(2)} MB · ${d.state === "done" ? n ? plural(n, "receipt") + " found" : "No receipts found. Try a clearer photo." : d.state === "scanning" ? "Reading and checking your receipts…" : "Ready to scan"}`}</small></div><span class="file-state ${d.state === "done" ? "success" : d.state === "scanning" ? "processing" : ""}">${d.state === "done" ? icon("check") : d.state === "scanning" ? icon("refresh", "spin") : d.state === "error" ? "Failed" : "Queued"}</span>${d.state === "error" ? `<button class="btn small" data-act="retry" data-doc="${d.key}">Retry</button>` : ""}<button class="icon-btn" data-act="remove" data-doc="${d.key}" aria-label="Remove ${esc(d.file.name)}"${d.state === "scanning" ? " disabled" : ""}>${icon("x")}</button></div>`;
+  }).join("");
+  $("queueStatus").textContent = busy ? active ? `Scanning ${ds.length + errors + 1} of ${docs.length} documents` : "Preparing your scan…" : queued ? `${plural(queued, "document")} ready to scan` : errors ? `${plural(errors, "document")} couldn’t be scanned` : docs.length ? `${plural(ds.length, "document")} scanned` : "No documents added yet";
+  $("queueHint").textContent = busy ? "You can add more files while we work." : queued ? "Select Scan to extract your receipts." : errors ? "Check the message above and retry." : docs.length ? "Add more files whenever you need." : "Choose a file to get started.";
+  $("go").disabled = busy || !queued;
+  $("clearAll").hidden = docs.length < 2;
+  $("clearAll").disabled = busy;
+  $("clearAll").title = busy ? "Wait until the scan has finished" : "";
+  $("go").innerHTML = icon(busy ? "refresh" : "scan", busy ? "spin" : "") + (busy ? "Scanning…" : queued ? `Scan ${plural(queued, "document")}` : "Scan documents") + (!busy ? icon("arrow") : "");
+  $("msg").textContent = $("queueStatus").textContent;
+  const cards = [
+    ["Documents", docs.length, docs.length ? `${ds.length} scanned${errors ? ` · ${errors} failed` : ""}` : "Add photos or PDFs", "folder", ""],
+    ["Receipts found", all.length, all.length ? "Separated from your documents" : "Your receipts will appear here", "receipt", ""],
+    ["To review", attention, all.length ? `${reviewed} reviewed by you` : "We’ll flag anything uncertain", "eye", attention ? "warning" : ""],
+    ["Claim total", `<small>Rp</small>${fmt(total)}`, all.length ? "Includes edits and unreviewed amounts" : "Amounts appear after scanning", "wallet", "total"],
+  ];
+  $("cards").innerHTML = cards.map(([label, value, note, ic, cls]) => `<div class="metric ${cls}"><div class="metric-top"><span>${label}</span>${icon(ic)}</div><div class="metric-value">${value}</div><div class="metric-caption">${esc(note)}</div></div>`).join("");
+  $("resultTools").hidden = $("receiptScroll").hidden = !all.length;
+  $("emptyResults").hidden = !!all.length;
+  $("resultsHint").textContent = all.length ? "Edit any field, compare with the original, then mark it reviewed." : "Your extracted details will appear here after scanning.";
+  $("resultCount").textContent = all.length ? `${plural(all.length, "receipt")} · ${plural(ds.length, "document")}` : "No receipts yet";
+  $("reviewNext").hidden = !attention;
+  $("countAll").textContent = all.length; $("countReview").textContent = attention; $("countReviewed").textContent = reviewed;
+  document.querySelectorAll("[data-filter]").forEach(b => { b.classList.toggle("active", b.dataset.filter === filter); b.setAttribute("aria-pressed", String(b.dataset.filter === filter)); });
+  let shown = 0;
+  $("rows").innerHTML = ds.map(d => {
+    const rs = d.result.receipts.filter(r => matchesReceipt(r, dup));
+    if (!rs.length) return ""; shown += rs.length;
+    const head = `<tr class="doc"><td colspan="8"><div class="doc-head">${icon("file")}<strong>${esc(d.file.name)}</strong><span>${plural(rs.length, "receipt")}</span><span class="doc-total">Rp ${fmt(d.result.receipts.reduce((a, r) => a + claimValue(r), 0))}</span><button class="btn small quiet" data-act="xlsx" data-doc="${d.key}" title="Export this document as Excel">${icon("download")}Export</button></div></td></tr>`;
+    return head + rs.map(r => {
+      const confidence = Math.max(0, Math.min(100, Math.round((r.confidence || 0) * 100)));
+      const note = amountNote(r);
+      return `<tr class="row" data-id="${esc(r.uid)}"><td><button class="preview-btn" data-open="${esc(r.uid)}" aria-label="View original receipt from ${esc(merchantOf(r) || d.file.name)}">${r.image ? `<img class="thumb" src="data:image/jpeg;base64,${esc(r.image)}" alt="Receipt preview">` : icon("receipt")}</button></td><td>${badge(r, dup)}<button class="view-btn" data-open="${esc(r.uid)}">${icon("eye")}View receipt</button><div class="scan-score" title="Scanner confidence; your review is separate">${confidence}% scan confidence</div></td>
+      <td>${typeSelect(r.uid, typeOf(r), edited(r, "type"))}</td>
+      <td>${fieldInput(r, "date", "date", "date", dateOf(r), "Receipt date")}${!dateOf(r) ? '<div class="src warn">Add the missing date</div>' : dateUnsure(r) ? '<div class="src warn">Unsure – check the date</div>' : ""}</td>
+      <td>${fieldInput(r, "merchant", "merchant", "text", merchantOf(r), "Merchant")}</td>
+      <td>${fieldInput(r, "note", "note", "text", noteOf(r), "Keterangan / Notes")}</td>
+      <td class="num">${fieldInput(r, "amount", "amt" + (note.startsWith("best") ? " guess" : ""), "number", amountOf(r) ?? "", "Claim amount in rupiah")}${note ? `<div class="src">${esc(note)}</div>` : ""}${isMedical(r) && amountOf(r) ? `<div class="src">Claim 90%: Rp ${fmt(medicalClaim(amountOf(r)))}</div>` : ""}</td>
+      <td><label class="review-label"><input type="checkbox" class="rev" data-id="${esc(r.uid)}" ${edits[r.uid]?.reviewed ? "checked" : ""} aria-label="Mark receipt from ${esc(merchantOf(r) || d.file.name)} as reviewed"></label></td></tr>`;
+    }).join("");
+  }).join("") || '<tr><td colspan="8" class="empty-filter">No receipts match this view. Try another filter or search.</td></tr>';
+  $("resultsFootnote").textContent = all.length ? `${shown} of ${plural(all.length, "receipt")} shown · Edits are included in your export.` : "Your original scan is kept alongside your corrections.";
+  $("period").textContent = dates.length ? `${dates[0]}${dates[0] !== dates.at(-1) ? " → " + dates.at(-1) : ""} · IDR` : "Amounts in Indonesian rupiah (IDR)";
+  $("xlsx").disabled = $("csv").disabled = $("json").disabled = !all.length || busy;
+  const claimDocs = ds.filter(d => d.result.receipts.length);
+  $("oneWrap").hidden = claimDocs.length < 2;
+  if (claimDocs.length >= 2) {
+    $("layoutDocs").textContent = plural(claimDocs.length, "document");
+    $("perDocPreview").textContent = `${plural(claimDocs.length, "table")}: ` + claimDocs.map(d => `${d.file.name} (${plural(d.result.receipts.length, "receipt")})`).join(", ");
+    $("onePreview").textContent = `1 table · ${plural(all.length, "receipt")}${dates.length ? ` · ${dates[0]}${dates[0] !== dates.at(-1) ? " → " + dates.at(-1) : ""}` : ""} · Rp ${fmt(total)}`;
+  }
+  $("exportHint").textContent = !all.length ? "Scan your documents to create a spreadsheet-ready claim."
+    : (claimDocs.length >= 2 ? "Every receipt gets its own row, in date order. Choose below whether your documents are one claim or several." : "Every receipt gets its own row, in date order.")
+      + (all.some(isMedical) ? ` ${plural(all.filter(isMedical).length, "medical receipt")} go${all.filter(isMedical).length === 1 ? "es" : ""} to a separate Claim Medical form, at 90%.` : "");
+  $("exportWarning").hidden = !attention;
+  $("exportWarning").textContent = `${plural(attention, "receipt")} still to review. Exports include all receipts, even those needing review.`;
+}
+function changeField(el) {
+  const r = receiptOf(el.dataset.id); if (!r) return;
+  if (el.dataset.f === "amount" && el.value !== "" && (!Number.isSafeInteger(Number(el.value)) || Number(el.value) < 0)) {
+    el.setCustomValidity("Enter a whole, non-negative amount in rupiah."); el.reportValidity(); return;
+  }
+  el.setCustomValidity("");
+  const e = (edits[r.uid] ??= {}), f = el.dataset.f;
+  const READ = { type: typeRead, date: dateRead, merchant: merchantRead, patient: patientRead, service: serviceRead };
+  if (f === "amount") e.amount = el.value === "" ? null : Number(el.value);
+  else if (f === "note") { delete e.note; if (el.value.trim() !== noteOf(r)) e.note = el.value.trim(); }
+  else if (el.value.trim() === READ[f](r)) delete e[f];
+  else e[f] = el.value.trim();
+  e.reviewed = false;
+  el.classList.toggle("edited", edited(r, f));
+  render();
+  // Keep the active editor mounted; update only dependent details after an edit.
+  if ($("dlg").open && currentReceipt === r.uid) {
+    if (f === "type") return openDetail(r.uid);         // a medical receipt has fields of its own
+    if (f === "merchant") $("dInfo").querySelector('[data-f="note"]').value = noteOf(r);
+    $("detailBadge").innerHTML = badge(r, duplicates());
+    $("markReviewed").innerHTML = icon("check") + "Mark as reviewed";
+  }
+}
+document.addEventListener("input", e => { if (e.target.matches(".ed")) e.target.setCustomValidity(""); });
+document.addEventListener("change", e => {
+  if (e.target.matches(".ed")) changeField(e.target);
+  if (e.target.matches(".rev")) { (edits[e.target.dataset.id] ??= {}).reviewed = e.target.checked; render(); }
+});
+document.addEventListener("click", e => {
+  const open = e.target.closest("[data-open]"); if (open) openDetail(open.dataset.open);
+  const f = e.target.closest("[data-filter]"); if (f) { filter = f.dataset.filter; render(); }
+  const action = e.target.closest("[data-act]"); if (!action) return;
+  const d = docs.find(x => x.key === action.dataset.doc); if (!d) return;
+  if (action.dataset.act === "xlsx") return saveXlsx("claim-" + d.file.name.replace(/\.[^.]*$/, "") + ".xlsx", [d]);
+  if (action.dataset.act === "retry") { d.state = "queued"; d.error = null; notify("Document queued. Select Scan documents to retry."); }
+  if (action.dataset.act === "remove" && d.state !== "scanning") { docs.splice(docs.indexOf(d), 1); for (const k in edits) if (k.startsWith(d.key + "/")) delete edits[k]; }
+  render();
+});
+$("search").oninput = render;
+// Start over in one go. Scanned receipts and corrections are work, so those are only thrown away
+// after asking; a list of files nobody has scanned yet just goes.
+$("clearAll").onclick = () => {
+  if (busy || !docs.length) return;
+  const scanned = done().length, corrected = Object.keys(edits).length;
+  if ((scanned || corrected) && !confirm(`Remove all ${plural(docs.length, "document")}?`
+      + (scanned ? ` ${plural(scanned, "scanned document")} and ${corrected ? "your corrections" : "their receipts"} will be lost.` : "")
+      + " Export first if you still need them.")) return;
+  const n = docs.length;
+  docs.length = 0;
+  for (const k in edits) delete edits[k];
+  filter = "all"; $("search").value = "";
+  if ($("dlg").open) $("dlg").close();
+  render();
+  notify(`${plural(n, "document")} removed.`);
+};
+$("reviewNext").onclick = () => {
+  const dup = duplicates();
+  const next = done().flatMap(d => d.result.receipts).find(r => needsAttention(r, dup));
+  if (next) openDetail(next.uid);
+};
+function opticalDetails(r) {
+  if (r.docType !== "optical") return "";
+  const labels = {receiptNo: "Receipt number", patientAddress: "Patient address", patientPhone: "Patient phone",
+    merchantPhone: "Shop phone", frameCode: "Frame code", lensType: "Lens type", rightSphere: "Right eye · sphere",
+    rightCylinder: "Right eye · cylinder", rightAxis: "Right eye · axis", leftSphere: "Left eye · sphere",
+    leftCylinder: "Left eye · cylinder", leftAxis: "Left eye · axis", addition: "Add"};
+  const rows = Object.entries(labels).flatMap(([key, label]) => {
+    const field = r.fields?.[key];
+    if (!field || field.value == null) return key === "frameCode" ? [`<tr><th scope="row">${label}</th><td>Unclear — check the original</td></tr>`] : [];
+    const value = typeof field.value === "number" && !key.endsWith("Axis") ? field.value.toFixed(2) : field.value;
+    return [`<tr><th scope="row">${label}</th><td>${esc(value)}${field.source === "inferred" ? ' <span class="src">(inferred — confirm)</span>' : ""}</td></tr>`];
+  }).join("");
+  return `<details class="technical" open><summary>Optical receipt details</summary><p class="src">Compare these readings with the original. Blank prescription cells are left empty.</p><table><tbody>${rows}</tbody></table></details>`;
+}
+function openDetail(uid) {
+  const r = receiptOf(uid); if (!r) return;
+  currentReceipt = uid;
+  $("detailTitle").textContent = merchantOf(r) || "Review receipt";
+  $("detailSource").textContent = `${r.source?.file || "Document"} · Page ${r.source?.page || 1} · ${TYPE[typeOf(r)].label}`;
+  $("dImg").classList.remove("zoomed");
+  $("dImg").innerHTML = r.image ? `<img src="data:image/jpeg;base64,${esc(r.image)}" alt="Original receipt from ${esc(merchantOf(r) || "uploaded document")}">` : `<div class="image-placeholder">${icon("receipt")}No image preview available.<br>Compare with your uploaded document.</div>`;
+  $("zoomImage").disabled = !r.image; $("zoomImage").textContent = "Zoom image";
+  const dup = duplicates(), reasons = [dup[uid], ...(r.reviewReasons || [])].filter(Boolean);
+  if (hasCorrections(r)) reasons.unshift("You changed the extracted details. Check your corrections before marking this reviewed.");
+  const fields = Object.entries(r.fields || {}).map(([k, v]) => `<tr><td>${esc(k.replace(/([a-z])([A-Z])/g, "$1 $2"))}</td><td>${esc(typeof v.value === "object" ? JSON.stringify(v.value) : v.value)}</td><td>${Math.round(v.confidence * 100)}%</td><td>${esc(v.source)}</td></tr>`).join("");
+  const checks = (r.checks || []).map(c => `<li class="${["pass", "fail", "warn", "skip"].includes(c.status) ? c.status : "skip"}"><b>${esc(c.status)}</b> ${esc(c.message)}</li>`).join("");
+  $("dInfo").innerHTML = `<div class="detail-status"><div id="detailBadge">${badge(r, dup)}</div><span class="src">${Math.round((r.confidence || 0) * 100)}% scan confidence</span></div>${reasons.length ? `<div class="review-notice"><b>What to check</b><ul>${reasons.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>` : ""}
+    <div class="detail-form"><label>Category${typeSelect(uid, typeOf(r), edited(r, "type"))}</label><label>Receipt date${fieldInput(r, "date", "date", "date", dateOf(r), "Receipt date")}</label><label class="wide">Merchant${fieldInput(r, "merchant", "merchant", "text", merchantOf(r), "Merchant")}</label><label class="wide">Claim amount (Rp)${fieldInput(r, "amount", "amt", "number", amountOf(r) ?? "", "Claim amount in rupiah")}<span class="src">${esc(amountNote(r) || "Use the amount you want to include in your claim.")}</span></label>${isMedical(r) ? `<label>Patient (Nama Pasien)${fieldInput(r, "patient", "patient", "text", patientOf(r), "Patient name on the receipt")}</label><label>Claim 90%<input class="ed" type="text" value="Rp ${fmt(medicalClaim(amountOf(r)))}" disabled aria-label="Medical claim, 90 percent"></label><label class="wide">Service / medicine (Deskripsi Pelayanan/Nama Obat)${fieldInput(r, "service", "service", "text", serviceOf(r), "Service or medicine")}</label>` : ""}<label class="wide">Keterangan / Notes<textarea class="ed note${edited(r, "note") ? " edited" : ""}" data-f="note" data-id="${esc(uid)}" aria-label="Keterangan / Notes">${esc(noteOf(r))}</textarea></label></div>
+    ${opticalDetails(r)}<details class="technical"><summary>Original extracted fields & checks</summary><p style="margin-top:10px">Scanner results are preserved here. Your corrections are saved separately.</p><table><thead><tr><th>Field</th><th>Read value</th><th>Confidence</th><th>Source</th></tr></thead><tbody>${fields}</tbody></table><ul>${checks || "<li>No additional checks available.</li>"}</ul>${r.rawText?.length ? `<details><summary>Raw text</summary><pre>${esc(r.rawText.join("\n"))}</pre></details>` : ""}<p class="src">Document type: ${esc(r.docType)} · Receipt ${esc(r.id)}</p></details>`;
+  const all = done().flatMap(d => d.result.receipts), index = all.indexOf(r);
+  $("detailPosition").textContent = `${index + 1} of ${all.length}`;
+  $("previousReceipt").disabled = index === 0; $("nextReceipt").disabled = index === all.length - 1;
+  $("markReviewed").innerHTML = icon("check") + (edits[uid]?.reviewed ? "Undo reviewed" : "Mark as reviewed");
+  if (!$("dlg").open) $("dlg").showModal();
+}
+$("closeDetail").onclick = () => $("dlg").close();
+function toggleZoom() { const zoomed = $("dImg").classList.toggle("zoomed"); $("zoomImage").textContent = zoomed ? "Fit image" : "Zoom image"; }
+$("zoomImage").onclick = toggleZoom;
+$("dImg").onclick = e => { if (e.target.tagName === "IMG") toggleZoom(); };
+for (const [id, delta] of [["previousReceipt", -1], ["nextReceipt", 1]]) $(id).onclick = () => {
+  const all = done().flatMap(d => d.result.receipts), next = all[all.findIndex(r => r.uid === currentReceipt) + delta];
+  if (next) openDetail(next.uid);
+};
+$("markReviewed").onclick = () => {
+  if (!validateEditors()) return;
+  const e = (edits[currentReceipt] ??= {}); e.reviewed = !e.reviewed;
+  render(); openDetail(currentReceipt);
+  notify(e.reviewed ? "Receipt marked as reviewed. Your corrections are included in the export." : "Receipt returned to its scan review status.");
+};
+
+const CLAIM_COLS = ["bbm", "tol", "parkir", "pulsa", "servis", "lain"];
+function validateEditors() {
+  const invalid = [...document.querySelectorAll(".ed")].find(el => !el.checkValidity());
+  if (invalid) { invalid.reportValidity(); return false; }
+  return true;
+}
+const claimColumn = (r) => TYPE[typeOf(r)].col;
+// One row per receipt, in date order: three receipts on one day are three rows. A receipt without a
+// readable date comes last; receipts of the same date keep the order of the document.
+function claimRows(receipts) {
+  return receipts.filter(r => !isMedical(r)).map(r => {
+    const date = dateOf(r), row = { date, liter: 0, ...Object.fromEntries(CLAIM_COLS.map(c => [c, 0])) };
+    row[claimColumn(r)] = amountOf(r) || 0;
+    if (typeOf(r) === "fuel") row.liter = Math.round((r.fields?.volumeLiters?.value || 0) * 100);   // in 1/100 L, so the total adds up exactly
+    row.note = [noteOf(r) || (date ? "" : merchantOf(r) || r.docType), date ? "" : "(tanggal tidak terbaca)"].filter(Boolean).join(" ");
+    row.image = r.image || null;          // for the Excel Attachment sheet
+    return row;
+  }).sort((a, b) => (a.date || "~") < (b.date || "~") ? -1 : (a.date || "~") > (b.date || "~") ? 1 : 0);
+}
+function medicalRows(receipts) {
+  return receipts.filter(isMedical).map(r => ({ date: dateOf(r), amount: amountOf(r) || 0, service: serviceOf(r),
+    patient: patientOf(r), note: noteOf(r) || (dateOf(r) ? "" : merchantOf(r)), image: r.image || null }))
+    .sort((a, b) => (a.date || "~") < (b.date || "~") ? -1 : (a.date || "~") > (b.date || "~") ? 1 : 0);
+}
+function claimTable(receipts) {
+  const body = claimRows(receipts);
+  const sum = (k) => body.reduce((a, row) => a + row[k], 0), total = (row) => CLAIM_COLS.reduce((a, c) => a + row[c], 0);
+  const cells = (row) => [row.liter ? (row.liter / 100).toFixed(2) : "", ...[...CLAIM_COLS.map(c => row[c]), total(row)].map(v => v || "")];
+  const sums = Object.fromEntries(["liter", ...CLAIM_COLS].map(k => [k, sum(k)]));
+  return [
+    ["No", "Tanggal", "BBM", "", "", "Tol", "Parkir", "Pulsa", "Servis Kendaraan", "Lain-lain", "Total", "Keterangan"],
+    ["", "", "KM", "Liter", "Rp", "", "", "", "", "", "", ""],
+    ...body.map((row, i) => [i + 1, row.date, "", ...cells(row), row.note]),
+    ["", "Total", "", ...cells(sums), ""],
+  ];
+}
+// One table per document, each under its file name - or a single table when there is only one
+// document or the pages of one claim were uploaded as separate files ("One table for all documents").
+function saveCsv(name, ds, oneTable = ds.length === 1) {
+  if (!validateEditors()) return;
+  const cell = (x) => /[",\r\n]/.test(String(x)) ? `"${String(x).replace(/"/g, '""')}"` : String(x);
+  const text = (rows) => rows.map(row => row.map(cell).join(",")).join("\n");
+  const all = ds.flatMap(d => d.result.receipts);
+  const tables = (oneTable ? [[null, all]] : ds.map(d => [d.file.name, d.result.receipts])).filter(([, rs]) => claimRows(rs).length);
+  const parts = [];
+  if (tables.length) parts.push(text([["Claim Tunjangan Operasional Karyawan"]]),
+    ...tables.map(([label, rs]) => text([...(label && tables.length > 1 ? [[label]] : []), ...claimTable(rs)])));
+  const med = medicalRows(all);
+  if (med.length) parts.push(text([["Claim Medical Karyawan"], [],
+    ["No", "Tanggal", "Nilai Kwitansi", "Nilai Claim", "Deskripsi Pelayanan/Nama Obat", "Nama Pasien di Kwitansi", "Keterangan"],
+    ...med.map((m, i) => [i + 1, m.date, m.amount || "", medicalClaim(m.amount) || "", m.service, m.patient, m.note]),
+    ["", "Total", "", med.reduce((a, m) => a + medicalClaim(m.amount), 0) || "", "", "", ""]]));
+  download(name, "﻿" + parts.join("\n\n"), "text/csv");
+}
+try { if (localStorage.getItem("docscan.combine") === "1") $("one").checked = true; } catch (e) {}
+for (const id of ["one", "perDoc"]) $(id).onchange = () => { try { localStorage.setItem("docscan.combine", $("one").checked ? "1" : "0"); } catch (e) {} };
+// Excel: a 'Claim Tunj Operasional' sheet - one table per claim, stacked under the documents' names - and,
+// for medical receipts, a 'Claim Medical' sheet, then an 'Attachment' sheet with the picture of every receipt
+// under its row's number. The server only lays the rows out as the paper forms; what is on them - your
+// corrections included - is decided here, like for the CSV.
+async function saveXlsx(name, ds, oneTable = ds.length === 1) {
+  if (!validateEditors()) return;
+  const table = (title, receipts) => ({ name: title, rows: claimRows(receipts).map(row => ({
+    date: row.date || null, liters: row.liter ? row.liter / 100 : null, note: row.note, image: row.image,
+    ...Object.fromEntries(CLAIM_COLS.map(c => [c, row[c]])) })) });
+  const all = ds.flatMap(d => d.result.receipts);
+  const tables = (oneTable ? [table(ds.length === 1 ? ds[0].file.name : "Claim", all)]
+    : ds.map(d => table(d.file.name, d.result.receipts))).filter(t => t.rows.length);
+  const medical = medicalRows(all).map(m => ({ ...m, date: m.date || null }));
+  const key = $("key").value.trim();
+  try {
+    const r = await fetch("/v1/export/xlsx", { method: "POST", body: JSON.stringify({ tables, medical }),
+      headers: { "Content-Type": "application/json", ...(key ? { "X-API-Key": key } : {}) } });
+    if (!r.ok) throw new Error(r.status === 401 ? "An API key is required or incorrect." : r.status === 413
+      ? "The receipt pictures are too large to send in one export; export fewer documents at a time." : `The server answered ${r.status}.`);
+    downloadBlob(name, await r.blob());
+  } catch (e) {
+    notify(`Excel export failed: ${e.message === "Failed to fetch" ? "could not reach the server" : e.message} You can still export CSV.`);
+  }
+}
+const exportDocs = () => done().filter(d => d.result.receipts.length);
+$("xlsx").onclick = () => { const ds = exportDocs(); saveXlsx("claim.xlsx", ds, ds.length === 1 || $("one").checked); };
+$("csv").onclick = () => { const ds = exportDocs(); saveCsv("claim.csv", ds, ds.length === 1 || $("one").checked); };
+$("json").onclick = () => {
+  if (!validateEditors()) return;
+  const out = done().map(d => {
+    const res = structuredClone(d.result);
+    res.receipts.forEach(r => { delete r.image; if (edits[r.uid]) r.userEdits = edits[r.uid]; delete r.uid; });
+    return res;
+  });
+  download("receipts.json", JSON.stringify(out.length === 1 ? out[0] : out, null, 2), "application/json");   // one scan result per document
+};
+function download(name, text, type) { downloadBlob(name, new Blob([text], { type })); }
+function downloadBlob(name, blob) {
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+render();
+</script>
+</body>
+</html>

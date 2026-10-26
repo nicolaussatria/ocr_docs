@@ -1,0 +1,36 @@
+{
+  "method": "Manual transcription of the user-provided photo; not OCR output",
+  "currency": "IDR",
+  "receiptCount": 2,
+  "nominalTotal": 275000,
+  "adminFeeTotal": 4000,
+  "totalAmount": 279000,
+  "transactions": [
+    {
+      "docType": "mobile_topup",
+      "category": "pulsa",
+      "merchantName": "TELKOMSEL",
+      "product": "TELKOMSEL PULSA",
+      "transactionStatus": "success",
+      "transactionDate": "2026-10-01",
+      "transactionAt": "2026-10-01T06:23:35",
+      "phoneNumber": "081388633017",
+      "nominal": 200000,
+      "adminFee": 2000,
+      "amountPaid": 202000
+    },
+    {
+      "docType": "mobile_topup",
+      "category": "pulsa",
+      "merchantName": "TELKOMSEL",
+      "product": "TELKOMSEL PULSA",
+      "transactionStatus": "success",
+      "transactionDate": "2026-09-30",
+      "transactionAt": "2026-09-30T11:37:16",
+      "phoneNumber": "081320527048",
+      "nominal": 75000,
+      "adminFee": 2000,
+      "amountPaid": 77000
+    }
+  ]
+}
