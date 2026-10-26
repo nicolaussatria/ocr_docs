@@ -2,5 +2,10 @@ tests/
 samples/
 clients/
 docs/
+deploy/
 **/__pycache__
 .pytest_cache
+.venv/
+.env
+*.xlsx
+.DS_Store

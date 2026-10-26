@@ -193,6 +193,25 @@ Tests: `pytest -q` (`-m "not slow"` skips the ones that load the OCR models).
 Accuracy report: `python tests/eval_golden.py`; for receipts without a template, `python tests/eval_cord.py`; dates and
 shop names, `python tests/eval_sroie.py`; bad photos, `python tests/eval_bad_photos.py` (see their docstrings).
 
+## Deploy on a private server (Docker Compose)
+
+`docker-compose.yml` runs `DOCSCAN_WORKERS` copies of the app (default 8) behind nginx (`deploy/nginx.conf`), which
+sends each request to the least busy copy. On Windows Server, run it in a Linux VM (e.g. Ubuntu 24.04 under Hyper-V)
+with Docker Engine and the compose plugin installed; size the VM at 2 vCPU and ~1.5 GB RAM per worker, plus 2 GB.
+
+```bash
+# copy to the server: Dockerfile docker-compose.yml .dockerignore .env.example requirements.txt docscan/ deploy/
+# (not tests/ or samples/: they hold real receipts)
+cp .env.example .env && chmod 600 .env     # set DOCSCAN_WORKERS; DOCSCAN_API_KEY optional (empty = no key)
+docker compose up -d --build               # first build downloads the Python packages (needs internet once)
+docker compose ps                          # every docscan-N 'healthy' after ~1 minute, then nginx starts
+curl http://localhost/healthz              # {"status":"ok", ...}
+```
+
+People open `http://<server-ip>/` (with a key set, they enter it once under **Connection settings**). A new version: copy the
+new files and run `docker compose up -d --build` again. More or fewer workers: change `DOCSCAN_WORKERS` in `.env` and
+run `docker compose up -d` (nginx notices within 10 s). Logs: `docker compose logs -f` (rotated, 30 MB per container).
+
 ## Many people at once
 
 The OCR engine reads one image at a time per worker, so people scanning together share it: the total time grows with

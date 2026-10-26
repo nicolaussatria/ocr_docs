@@ -1,0 +1,37 @@
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  docscan:
+    build: .
+    image: docscan:latest
+    env_file: .env # any other DOCSCAN_* setting (README "Configuration") goes there too
+    environment:
+      DOCSCAN_API_KEY: ${DOCSCAN_API_KEY:-} # empty: no key needed; set: everyone must enter it
+      DOCSCAN_INTRA_OP_THREADS: ${DOCSCAN_THREADS:-2} # CPU cores one worker uses for one scan
+      OMP_NUM_THREADS: ${DOCSCAN_THREADS:-2}
+      DOCSCAN_MAX_CONCURRENT_SCANS: "2" # scans one worker decodes at once; later ones wait their turn
+    deploy:
+      replicas: ${DOCSCAN_WORKERS:-8}
+      resources:
+        limits:
+          cpus: "${DOCSCAN_THREADS:-2}"
+          memory: 3g # peak is ~1.5 GB; room for a 10-page PDF without being killed
+    restart: unless-stopped
+    logging: *logging
+    # no ports: the workers are reached only through nginx
+
+  nginx:
+    image: nginx:1.28.0-alpine
+    ports:
+      - "${DOCSCAN_PORT:-80}:80"
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      docscan:
+        condition: service_healthy # the Dockerfile's /healthz check: models loaded
+    restart: unless-stopped
+    logging: *logging
